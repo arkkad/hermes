@@ -1,6 +1,6 @@
-package sevices;
+package maestro.sevices;
 
-import model.User;
+import maestro.model.User;
 
 import java.util.List;
 

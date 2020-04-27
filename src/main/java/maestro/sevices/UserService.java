@@ -1,15 +1,15 @@
-package sevices;
+package maestro.sevices;
 
-import model.Role;
-import model.User;
+import maestro.model.Role;
+import maestro.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import repo.RoleRepository;
-import repo.UserRepository;
+import maestro.repo.RoleRepository;
+import maestro.repo.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,19 +22,12 @@ public class UserService implements UserDetailsService, IUserService {
 
     @PersistenceContext
     private EntityManager em;
-
-    private final UserRepository userRepository;
-
-    private final RoleRepository roleRepository;
-
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @Override
@@ -70,7 +63,7 @@ public class UserService implements UserDetailsService, IUserService {
 
     @Override
     public boolean deleteUserById(Long id) {
-        if(userRepository.findById(id).isPresent()){
+        if (userRepository.findById(id).isPresent()) {
             userRepository.deleteById(id);
             return true;
         }

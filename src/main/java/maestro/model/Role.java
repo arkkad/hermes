@@ -1,4 +1,4 @@
-package model;
+package maestro.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

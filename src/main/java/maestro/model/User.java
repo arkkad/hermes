@@ -1,4 +1,4 @@
-package model;
+package maestro.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "usr")
 public class User implements UserDetails {
 
     @Id
