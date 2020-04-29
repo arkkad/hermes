@@ -24,7 +24,6 @@ public class UserResponseDTO {
         this.userId = user.getId();
         this.fullName = user.getFullName();
         this.email = user.getEmail();
-        this.isBanned = user.getBanned();
         this.roles = user.getRoles();
     }
 

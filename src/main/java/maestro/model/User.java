@@ -17,7 +17,7 @@ import java.util.*;
 public class User implements UserDetails, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "uuid-char")
     @Column(name = "id", length = 36, nullable = false, updatable = false)
     private UUID id;
@@ -48,9 +48,6 @@ public class User implements UserDetails, Serializable {
 
     @Column(name = "attempts_count", nullable = false)
     private Integer attemptsCount = 0;
-
-    @Column(name = "is_banned", columnDefinition = "default 'false'")
-    private Boolean isBanned;
 
     @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
@@ -140,14 +137,6 @@ public class User implements UserDetails, Serializable {
 
     public void setAttemptsCount(Integer attemptsCount) {
         this.attemptsCount = attemptsCount;
-    }
-
-    public Boolean getBanned() {
-        return isBanned;
-    }
-
-    public void setBanned(Boolean banned) {
-        isBanned = banned;
     }
 
     @Override

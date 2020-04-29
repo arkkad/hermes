@@ -1,7 +1,11 @@
 package maestro.sevices;
 
+import maestro.dto.NewUserDTO;
+import maestro.exceptions.HermesException;
 import maestro.model.Role;
 import maestro.model.User;
+import maestro.util.Constants;
+import maestro.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,9 +17,7 @@ import maestro.repo.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService, IUserService {
@@ -40,7 +42,42 @@ public class UserService implements UserDetailsService, IUserService {
     }
 
     @Override
-    public User findUserById(Long id) {
+    public boolean registerNewUser(NewUserDTO newUserDTO) {
+        List<User> users = userRepository.findAll();
+        Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
+        User user;
+        if (users.size() != 0 && userOptional.isPresent()) {
+            user = userOptional.get();
+            if (user.isEmailVerified()) {
+                throw new HermesException("Such user already exist");
+            }
+        } else {
+            user = new User();
+            user.setFullName(newUserDTO.getFullName());
+            user.setEmail(newUserDTO.getEmail());
+            user.setPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()));
+            user.setDateJoined(DateTimeUtil.getLocalDateTimeUtc());
+
+            user.getRoles().add(roleRepository.findByName(Constants.ROLE_USER));
+            user.setEmailVerified(true);
+            user.setAttemptsCount(0);
+
+            String verificationCode = generateRandomNumericString(Constants.VERIFICATION_CODE_LENGTH);
+            user.setVerificationCode(verificationCode);
+
+            userRepository.save(user);
+        }
+
+        return false;
+    }
+
+    private String generateRandomNumericString(int verificationCodeLength) {
+        int random = new Random().nextInt(9999);
+        return String.valueOf(random);
+    }
+
+    @Override
+    public User findUserById(UUID id) {
         Optional<User> userFromDb = userRepository.findById(id);
         return userFromDb.orElse(new User());
     }
@@ -51,19 +88,7 @@ public class UserService implements UserDetailsService, IUserService {
     }
 
     @Override
-    public boolean saveUser(User user) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
-        if (userFromDb != null) {
-            return false;
-        }
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return true;
-    }
-
-    @Override
-    public boolean deleteUserById(Long id) {
+    public boolean deleteUserById(UUID id) {
         if (userRepository.findById(id).isPresent()) {
             userRepository.deleteById(id);
             return true;

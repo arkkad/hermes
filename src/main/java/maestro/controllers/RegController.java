@@ -1,5 +1,6 @@
 package maestro.controllers;
 
+import maestro.dto.NewUserDTO;
 import maestro.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class RegController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<Object> addUser(@ModelAttribute("userForm") @Valid User userForm) {
-        return Util.createResponseEntity(userService.saveUser(userForm));
+    public ResponseEntity<Object> addUser(@ModelAttribute("userForm") @Valid NewUserDTO userForm) {
+        return Util.createResponseEntity(userService.registerNewUser(userForm));
     }
 }
