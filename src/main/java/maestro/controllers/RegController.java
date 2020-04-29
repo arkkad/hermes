@@ -13,7 +13,6 @@ import maestro.util.Util;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
 public class RegController {
 
     private final UserService userService;
