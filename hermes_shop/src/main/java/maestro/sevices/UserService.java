@@ -68,12 +68,11 @@ public class UserService implements UserDetailsService, IUserService {
             userRepository.save(user);
         }
 
-        return false;
+        return true;
     }
 
     private String generateRandomNumericString(int verificationCodeLength) {
-        int random = new Random().nextInt(9999);
-        return String.valueOf(random);
+        return String.valueOf(1000 + new Random().nextInt(9999 - 1000 + 1));
     }
 
     @Override
