@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3a4e0ae-3562-46f9-88f3-d21ee5f7601c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/mailsender/config/EmailSenderApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/mailsender/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/IEmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/processing/KafkaMessageReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/HermesOnlineShopApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/config/MvcConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/config/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/controllers/RegController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/dto/NewUserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/dto/UserResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/exceptions/HermesException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/model/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/repo/RoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/repo/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/sevices/IUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/sevices/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/util/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/util/DateTimeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/maestro/util/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,53 +70,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="hermes_shop" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="hermes_shop" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HermesOnlineShopApplication" />
@@ -192,38 +119,38 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588257581483" />
-    <state width="881" height="277" key="GridCell.Tab.0.bottom" timestamp="1588256302674">
+    <state width="881" height="277" key="GridCell.Tab.0.bottom" timestamp="1588259677171">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="277" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588256302674" />
-    <state width="881" height="277" key="GridCell.Tab.0.center" timestamp="1588256302664">
+    <state width="881" height="277" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677171" />
+    <state width="881" height="277" key="GridCell.Tab.0.center" timestamp="1588259677170">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="277" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588256302664" />
-    <state width="881" height="277" key="GridCell.Tab.0.left" timestamp="1588256302664">
+    <state width="881" height="277" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677170" />
+    <state width="881" height="277" key="GridCell.Tab.0.left" timestamp="1588259677163">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="277" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588256302664" />
-    <state width="881" height="277" key="GridCell.Tab.0.right" timestamp="1588256302664">
+    <state width="881" height="277" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677163" />
+    <state width="881" height="277" key="GridCell.Tab.0.right" timestamp="1588259677170">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="277" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588256302664" />
-    <state width="440" height="366" key="GridCell.Tab.1.bottom" timestamp="1588247197581">
+    <state width="881" height="277" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677170" />
+    <state width="440" height="366" key="GridCell.Tab.1.bottom" timestamp="1588259677145">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="440" height="366" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588247197581" />
-    <state width="440" height="366" key="GridCell.Tab.1.center" timestamp="1588247197574">
+    <state width="440" height="366" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677145" />
+    <state width="440" height="366" key="GridCell.Tab.1.center" timestamp="1588259677143">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="440" height="366" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588247197574" />
-    <state width="440" height="366" key="GridCell.Tab.1.left" timestamp="1588247197574">
+    <state width="440" height="366" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677143" />
+    <state width="440" height="366" key="GridCell.Tab.1.left" timestamp="1588259677137">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="440" height="366" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588247197574" />
-    <state width="440" height="366" key="GridCell.Tab.1.right" timestamp="1588247197581">
+    <state width="440" height="366" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677137" />
+    <state width="440" height="366" key="GridCell.Tab.1.right" timestamp="1588259677144">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="440" height="366" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588247197581" />
+    <state width="440" height="366" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588259677144" />
     <state x="184" y="391" width="780" height="439" key="NewModule_or_Project.wizard" timestamp="1588257583740">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

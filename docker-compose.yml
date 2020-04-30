@@ -1,0 +1,67 @@
+version: '3.2'
+services:
+  docker_db:
+    container_name: docker_db
+    image: postgres
+    environment:
+      POSTGRES_DB: hermes
+      POSTGRES_ROOT_PASSWORD: 'root'
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - "5432:5432"
+    networks:
+      - my_new_net
+
+  my_app:
+    container_name: docker_app
+    build:
+      context: ./hermes_shop
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - docker_db
+    networks:
+      - my_new_net
+
+  email-sender:
+    build:
+      context: ./hermes_shop_mailsender
+      dockerfile: Dockerfile
+    image: email-sender
+    ports:
+      - 8083:8081
+    networks:
+      - my_new_net
+    depends_on:
+      - kafka
+      - docker_db
+    restart: always
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      - my_new_net
+    container_name: zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - 9092:9092
+    networks:
+      - my_new_net
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: "9092"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "hermes-shop-email-sender-verification-code:1:1:delete"
+    depends_on:
+      - zookeeper
+networks:
+  my_new_net:
+    driver: bridge
