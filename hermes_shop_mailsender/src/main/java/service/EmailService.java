@@ -20,7 +20,6 @@ public class EmailService implements IEmailService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
 
-
     @Value("${verify.email.path}")
     private String verifyEmailPath;
 

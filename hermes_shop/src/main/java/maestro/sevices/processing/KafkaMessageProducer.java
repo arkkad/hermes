@@ -6,15 +6,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderRecord;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class KafkaMessageProducer {
-    @Value("${spring.kafka.email.email.verification.code.topic}")
+    @Value("${spring.kafka.email.verification.code.topic}")
     private String emailVerificationCodeTopic;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaMessageProducer.class);
@@ -28,7 +29,6 @@ public class KafkaMessageProducer {
 
     public void sendEmailVerificationCode(User user, String verificationCode) {
         Map<String, String> message = new HashMap<>();
-        message.put("userId", user.getId().toString());
         message.put("email", user.getEmail());
         message.put("fullName", user.getFullName());
         message.put("verificationCode", verificationCode);

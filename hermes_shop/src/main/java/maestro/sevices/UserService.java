@@ -4,6 +4,7 @@ import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
 import maestro.model.Role;
 import maestro.model.User;
+import maestro.sevices.processing.KafkaMessageProducer;
 import maestro.util.Constants;
 import maestro.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import javax.persistence.PersistenceContext;
 import java.util.*;
 
 @Service
-public class UserService implements UserDetailsService, IUserService {
+public class UserService implements IUserService {
 
     @PersistenceContext
     private EntityManager em;
@@ -30,16 +31,8 @@ public class UserService implements UserDetailsService, IUserService {
     RoleRepository roleRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("user not found");
-        }
-        return user;
-    }
+    @Autowired
+    KafkaMessageProducer kafkaMessageProducer;
 
     @Override
     public boolean registerNewUser(NewUserDTO newUserDTO) {
@@ -60,10 +53,11 @@ public class UserService implements UserDetailsService, IUserService {
 
             user.getRoles().add(roleRepository.findByName(Constants.ROLE_USER));
             user.setEmailVerified(true);
-            user.setAttemptsCount(0);
 
-            String verificationCode = generateRandomNumericString(Constants.VERIFICATION_CODE_LENGTH);
+            String verificationCode = generateRandomNumericString();
             user.setVerificationCode(verificationCode);
+
+//            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
 
             userRepository.save(user);
         }
@@ -71,7 +65,7 @@ public class UserService implements UserDetailsService, IUserService {
         return true;
     }
 
-    private String generateRandomNumericString(int verificationCodeLength) {
+    private String generateRandomNumericString() {
         return String.valueOf(1000 + new Random().nextInt(9999 - 1000 + 1));
     }
 

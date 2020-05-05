@@ -1,12 +1,12 @@
 package maestro.config;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 
@@ -19,8 +19,8 @@ public class KafkaProducerConfig {
     @Value("${kafka.server}")
     private String kafkaServer;
 
-    @Value("${kafka.group.id}")
-    private String kafkaProducerId;
+    @Value("${spring.kafka.producer.client-id}")
+    private String clientId;
 
     @Bean
     public SenderOptions<String, Object> senderOptions() {
@@ -28,7 +28,7 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        props.put(ProducerConfig.CLIENT_ID_CONFIG, kafkaProducerId);
+        props.put(ProducerConfig.CLIENT_ID_CONFIG, clientId);
         return SenderOptions.create(props);
     }
 

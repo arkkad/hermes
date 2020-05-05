@@ -9,4 +9,3 @@ COPY --from=0 /tmp/target/hermes-mail-sender-1.0-SNAPSHOT.jar /opt/
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/opt/hermes-mail-sender-1.0-SNAPSHOT.jar"]
 
-EXPOSE 8080
