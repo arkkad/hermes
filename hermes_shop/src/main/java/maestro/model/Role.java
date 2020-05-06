@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role implements Serializable {
+public class Role implements Serializable, GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,11 @@ public class Role implements Serializable {
 
     public void setRole(String role) {
         this.name = role;
+    }
+
+    @Override
+    public String getAuthority() {
+        return getRole();
     }
 
     enum Roles {

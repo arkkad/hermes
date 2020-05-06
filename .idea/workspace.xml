@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f3a4e0ae-3562-46f9-88f3-d21ee5f7601c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/MvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/dto/NewUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/dto/NewUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/processing/KafkaMessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/processing/KafkaMessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/mailsender/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/mailsender/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/processing/KafkaMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/processing/KafkaMessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +48,13 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="maestro.exceptions" />
+      <recent name="maestro.config.security" />
+      <recent name="mailsender.dto" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/hermes_shop_mailsender" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="mailsender.dto" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HermesOnlineShopApplication">
@@ -120,10 +116,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="198" y="354" width="719" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588274985896" />
-    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1588691067770">
+    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1588795187203">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588691067770" />
+    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588795187203" />
     <state x="160" y="478" width="722" height="151" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1587993302454">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -144,38 +140,38 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588276367704" />
-    <state width="871" height="275" key="GridCell.Tab.0.bottom" timestamp="1588419461808">
+    <state width="1807" height="279" key="GridCell.Tab.0.bottom" timestamp="1588797497556">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="871" height="275" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588419461808" />
-    <state width="871" height="275" key="GridCell.Tab.0.center" timestamp="1588419461807">
+    <state width="1807" height="279" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588797497556" />
+    <state width="1807" height="279" key="GridCell.Tab.0.center" timestamp="1588797497555">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="871" height="275" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588419461807" />
-    <state width="871" height="275" key="GridCell.Tab.0.left" timestamp="1588419461807">
+    <state width="1807" height="279" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588797497555" />
+    <state width="1807" height="279" key="GridCell.Tab.0.left" timestamp="1588797497551">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="871" height="275" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588419461807" />
-    <state width="871" height="275" key="GridCell.Tab.0.right" timestamp="1588419461808">
+    <state width="1807" height="279" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588797497551" />
+    <state width="1807" height="279" key="GridCell.Tab.0.right" timestamp="1588797497556">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="871" height="275" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588419461808" />
-    <state width="881" height="279" key="GridCell.Tab.1.bottom" timestamp="1588356486147">
+    <state width="1807" height="279" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588797497556" />
+    <state width="1807" height="279" key="GridCell.Tab.1.bottom" timestamp="1588797496814">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="279" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588356486147" />
-    <state width="881" height="279" key="GridCell.Tab.1.center" timestamp="1588356486146">
+    <state width="1807" height="279" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588797496814" />
+    <state width="1807" height="279" key="GridCell.Tab.1.center" timestamp="1588797496813">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="279" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588356486146" />
-    <state width="881" height="279" key="GridCell.Tab.1.left" timestamp="1588356486146">
+    <state width="1807" height="279" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588797496813" />
+    <state width="1807" height="279" key="GridCell.Tab.1.left" timestamp="1588797496812">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="279" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588356486146" />
-    <state width="881" height="279" key="GridCell.Tab.1.right" timestamp="1588356486147">
+    <state width="1807" height="279" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588797496812" />
+    <state width="1807" height="279" key="GridCell.Tab.1.right" timestamp="1588797496814">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="881" height="279" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588356486147" />
+    <state width="1807" height="279" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588797496814" />
     <state x="184" y="391" width="780" height="439" key="NewModule_or_Project.wizard" timestamp="1588257583740">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -184,26 +180,35 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="526" y="235" width="1024" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588257592902" />
-    <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588275706287">
+    <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588771563103">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588275706287" />
+    <state x="167" y="125" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588771563103" />
     <state x="381" y="386" width="1372" height="592" key="new project wizard" timestamp="1588243081383">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="381" y="386" width="1372" height="592" key="new project wizard/67.27.1853.1053@67.27.1853.1053" timestamp="1588243081383" />
-    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1587982119270">
+    <state x="657" y="253" key="run.anything.popup" timestamp="1588796298868">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1587982119270" />
+    <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1588796298868" />
+    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588766580159">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1588766580159" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/RegController.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/UserService.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="5" />
+          <line>34</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

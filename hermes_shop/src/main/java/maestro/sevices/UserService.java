@@ -2,15 +2,11 @@ package maestro.sevices;
 
 import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
-import maestro.model.Role;
 import maestro.model.User;
 import maestro.sevices.processing.KafkaMessageProducer;
 import maestro.util.Constants;
 import maestro.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import maestro.repo.RoleRepository;
@@ -46,11 +42,11 @@ public class UserService implements IUserService {
             }
         } else {
             user = new User();
-            user.setFullName(newUserDTO.getFullName());
+            user.setFullName(newUserDTO.getUsername());
+            user.setUsername(newUserDTO.getUsername());
             user.setEmail(newUserDTO.getEmail());
             user.setPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()));
             user.setDateJoined(DateTimeUtil.getLocalDateTimeUtc());
-
             user.getRoles().add(roleRepository.findByName(Constants.ROLE_USER));
             user.setEmailVerified(true);
 

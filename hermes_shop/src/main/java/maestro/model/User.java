@@ -3,19 +3,21 @@ package maestro.model;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +27,9 @@ public class User implements Serializable {
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
+
+    @Column(name = "username", nullable = false)
+    private String username;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -62,11 +67,9 @@ public class User implements Serializable {
         this.id = id;
     }
 
-
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public Set<Role> getRoles() {
         return roles;
@@ -116,8 +119,42 @@ public class User implements Serializable {
         this.verificationCode = verificationCode;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
     public String getPassword() {
-        return password;
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public boolean isActive() {
@@ -176,7 +213,7 @@ public class User implements Serializable {
             this.roles = user.roles;
         }
 
-        public User build(){
+        public User build() {
             User user = new User();
             user.id = id;
             user.email = email;
