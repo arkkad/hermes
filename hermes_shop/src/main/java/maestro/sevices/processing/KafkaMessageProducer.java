@@ -29,8 +29,8 @@ public class KafkaMessageProducer {
 
     public void sendEmailVerificationCode(User user, String verificationCode) {
         Map<String, String> message = new HashMap<>();
-        message.put("email", user.getEmail());
-        message.put("fullName", user.getFullName());
+//        message.put("email", user.getEmail());
+//        message.put("fullName", user.getFullName());
         message.put("verificationCode", verificationCode);
 
         sendData(emailVerificationCodeTopic, message, Map.class);

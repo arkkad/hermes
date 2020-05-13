@@ -1,29 +1,26 @@
 package maestro.dto;
 
-import maestro.model.Role;
 import maestro.model.User;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 public class UserResponseDTO {
     private UUID userId;
 
-    private String fullName;
+    private String username;
 
-    private String email;
 
     private Boolean isBanned;
 
-    private Set<Role> roles;
+    private Set<String> roles;
 
     public UserResponseDTO() {
     }
 
     public UserResponseDTO(User user) {
-        this.userId = user.getId();
-        this.fullName = user.getFullName();
-        this.email = user.getEmail();
+        this.username = user.getUsername();
         this.roles = user.getRoles();
     }
 
@@ -35,22 +32,6 @@ public class UserResponseDTO {
         this.userId = userId;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Boolean getBanned() {
         return isBanned;
     }
@@ -59,11 +40,11 @@ public class UserResponseDTO {
         isBanned = banned;
     }
 
-    public Set<Role> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 }

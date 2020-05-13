@@ -2,10 +2,8 @@ package maestro.config.security;
 
 import io.jsonwebtoken.*;
 import maestro.exceptions.InvalidJwtAuthenticationException;
-import maestro.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,52 +20,32 @@ import java.util.Set;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${security.jwt.token.secret-key:secret}")
-    private String secretKey = "secret";
-
-    @Value("${security.jwt.token.expire-length:3600000}")
-    private long validityMilliseconds = 3600000;
+    @Autowired JwtProperties jwtProperties;
 
     @Autowired
     private UserDetailsService userDetailsService;
 
+    private String secretKey;
+
     @PostConstruct
-    protected void init(){
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+    protected void init() {
+        secretKey = Base64.getEncoder().encodeToString(jwtProperties.getSecretKey().getBytes());
     }
 
-    public String createToken(String username, Set<Role> roles){
+    public String createToken(String username, Set<String> roles) {
+
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("roles", roles);
+
         Date now = new Date();
-        Date validity = new Date(now.getTime() + validityMilliseconds);
+        Date validity = new Date(now.getTime() + jwtProperties.getValidityInMs());
 
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, secretKey)
+        return Jwts.builder()//
+                .setClaims(claims)//
+                .setIssuedAt(now)//
+                .setExpiration(validity)//
+                .signWith(SignatureAlgorithm.HS256, secretKey)//
                 .compact();
-    }
-
-    public String resolveToken(HttpServletRequest servletRequest) {
-        String bearerToken = servletRequest.getHeader("Authorization");
-        if(bearerToken != null && bearerToken.startsWith("Bearer ")){
-            return bearerToken.substring(7, bearerToken.length());
-        }
-        return null;
-    }
-
-    public boolean validateToken(String token) {
-        try{
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
-            if (claims.getBody().getExpiration().before(new Date())){
-                return false;
-            }
-            return true;
-        } catch (JwtException | IllegalArgumentException e){
-            throw  new InvalidJwtAuthenticationException("Expired or invalid JWT token");
-        }
     }
 
     public Authentication getAuthentication(String token) {
@@ -75,9 +53,30 @@ public class JwtTokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    public String getUsername(String token){
+    public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
+    public String resolveToken(HttpServletRequest req) {
+        String bearerToken = req.getHeader("Authorization");
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7, bearerToken.length());
+        }
+        return null;
+    }
+
+    public boolean validateToken(String token) throws InvalidJwtAuthenticationException {
+        try {
+            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+
+            if (claims.getBody().getExpiration().before(new Date())) {
+                return false;
+            }
+
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new InvalidJwtAuthenticationException("Expired or invalid JWT token");
+        }
+    }
 
 }

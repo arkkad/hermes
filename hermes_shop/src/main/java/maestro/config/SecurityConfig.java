@@ -1,7 +1,6 @@
 package maestro.config;
 
-import maestro.config.security.JwtConfigurer;
-import maestro.config.security.JwtTokenFilter;
+import maestro.config.security.JwtSecurityConfigurer;
 import maestro.config.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,18 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     JwtTokenProvider jwtTokenProvider;
 
     @Bean
+    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return super.userDetailsService();
     }
 
     @Override
@@ -45,6 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/signin", "/api/users/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .apply(new JwtConfigurer(jwtTokenProvider));
+                .apply(new JwtSecurityConfigurer(jwtTokenProvider));
     }
 }
