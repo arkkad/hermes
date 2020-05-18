@@ -3,16 +3,17 @@ package maestro.sevices;
 import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
 import maestro.model.User;
+import maestro.repo.UserRepository;
 import maestro.sevices.processing.KafkaMessageProducer;
 import maestro.util.Constants;
-import maestro.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import maestro.repo.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -30,71 +31,49 @@ public class UserService implements IUserService {
     @Override
     public boolean registerNewUser(NewUserDTO newUserDTO) {
         List<User> users = userRepository.findAll();
-//        Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
+        Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
         User user;
-        //            user = userOptional.get();
-        //            if (user.isEmailVerified()) {
-        //                throw new HermesException("Such user already exist");
-        //            }
-        //        } else {
-        //            user = new User();
-        //            user.setFullName(newUserDTO.getUsername());
-        //            user.setUsername(newUserDTO.getUsername());
-        //            user.setEmail(newUserDTO.getEmail());
-        //            user.setPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()));
-        //            user.setDateJoined(DateTimeUtil.getLocalDateTimeUtc());
-        //            user.getRoles().add(roleRepository.findByName(Constants.ROLE_USER));
-        //            user.setEmailVerified(true);
-        //            user.setActive(true);
-        //            String verificationCode = generateRandomNumericString();
-        //            user.setVerificationCode(verificationCode);
-        //            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
-        //            userRepository.save(user);
-
-        return true;
+        if (userOptional.isPresent()) {
+            user = userOptional.get();
+            if (user.isEmailVerified()) {
+                throw new HermesException("Such user already exist");
+            }
+        } else {
+            String verificationCode = generateRandomNumericString();
+            user = new User.Builder()
+                    .withName(newUserDTO.getUsername())
+                    .withFullName(newUserDTO.getFullName())
+                    .withPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()))
+                    .withEmail(newUserDTO.getEmail())
+                    .withDateJoined(LocalDateTime.now(Clock.systemUTC()))
+                    .withVerificationCode(verificationCode)
+                    .withActive(true)
+                    .withisEmailVerified(true)
+                    .withRoles(new HashSet<>(Collections.singletonList(Constants.ROLE_USER)))
+                    .build();
+//            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public User findUserById(UUID id) {
-        return null;
+    public Optional<User> findUserById(UUID id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
-    public boolean deleteUserById(UUID id) {
-        return false;
+    public void deleteUserById(UUID id) {
+        userRepository.deleteById(id);
     }
 
     private String generateRandomNumericString() {
         return String.valueOf(1000 + new Random().nextInt(9999 - 1000 + 1));
-    }
-
-//    @Override
-//    public User findUserById(UUID id) {
-//        Optional<User> userFromDb = userRepository.findById(id);
-//        return userFromDb.orElse(new User());
-//    }
-//
-//    @Override
-//    public List<User> getAllUsers() {
-//        return userRepository.findAll();
-//    }
-//
-//    @Override
-//    public boolean deleteUserById(UUID id) {
-//        if (userRepository.findById(id).isPresent()) {
-//            userRepository.deleteById(id);
-//            return true;
-//        }
-//        return false;
-//    }
-
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
     }
 }

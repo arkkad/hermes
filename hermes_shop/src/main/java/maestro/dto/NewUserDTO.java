@@ -14,6 +14,9 @@ public class NewUserDTO {
     @NotBlank
     private String username;
 
+    @NotBlank
+    private String fullName;
+
     public String getEmail() {
         return email;
     }
@@ -36,5 +39,13 @@ public class NewUserDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }
