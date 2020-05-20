@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f3a4e0ae-3562-46f9-88f3-d21ee5f7601c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/dto/NewUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/dto/NewUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/util/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -147,22 +143,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1589444539277" />
-    <state width="1807" height="392" key="GridCell.Tab.0.bottom" timestamp="1589564822447">
+    <state width="1807" height="383" key="GridCell.Tab.0.bottom" timestamp="1589920823380">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="392" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589564822447" />
-    <state width="1807" height="392" key="GridCell.Tab.0.center" timestamp="1589564822440">
+    <state width="1807" height="383" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589920823380" />
+    <state width="1807" height="383" key="GridCell.Tab.0.center" timestamp="1589920823379">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="392" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589564822440" />
-    <state width="1807" height="392" key="GridCell.Tab.0.left" timestamp="1589564822440">
+    <state width="1807" height="383" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589920823379" />
+    <state width="1807" height="383" key="GridCell.Tab.0.left" timestamp="1589920823379">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="392" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589564822440" />
-    <state width="1807" height="392" key="GridCell.Tab.0.right" timestamp="1589564822441">
+    <state width="1807" height="383" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589920823379" />
+    <state width="1807" height="383" key="GridCell.Tab.0.right" timestamp="1589920823379">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="392" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589564822441" />
+    <state width="1807" height="383" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589920823379" />
     <state width="1807" height="392" key="GridCell.Tab.1.bottom" timestamp="1589564822453">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

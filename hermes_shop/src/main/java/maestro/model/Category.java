@@ -15,16 +15,16 @@ public class Category {
     @Column(name = "category_name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Product> productSet = new HashSet<>();
+//    @ManyToMany(mappedBy = "categories")
+//    private Set<Product> productSet = new HashSet<>();
 
     public String getName() {
         return name;
     }
 
-    public Set<Product> getProductSet() {
-        return productSet;
-    }
+//    public Set<Product> getProductSet() {
+//        return productSet;
+//    }
 
     public Category() {
     }

@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 
 @Component
@@ -24,7 +26,7 @@ public class DataInitalizer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         HashSet<String> strings = new HashSet<>();
-        strings.add("ROLE_ADMIN");
+//        strings.add("ROLE_ADMIN");
 //        userRepository.save(new User.Builder()
 //                .withName("admin")
 //                .withEmail("123@123.com")
