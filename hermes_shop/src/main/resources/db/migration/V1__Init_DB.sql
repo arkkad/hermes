@@ -37,8 +37,8 @@ create table categories (
     primary key (id));
 
 create table product_categories (
-    products_id int8 not null,
-    category_id int8 not null,
+    products_id int8 not null references products,
+    category_id int8 not null references categories,
     primary key (products_id, category_id));
 
 create sequence hibernate_sequence start 1 increment 1;

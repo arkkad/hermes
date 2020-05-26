@@ -1,5 +1,8 @@
 package maestro.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -28,7 +31,9 @@ public class Product {
     @Column(name = "product_pic")
     private String pic_path;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+
+    @Fetch(FetchMode.SUBSELECT)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "product_categories",
             joinColumns = {@JoinColumn(name = "products_id")},
@@ -78,6 +83,14 @@ public class Product {
         return pic_path;
     }
 
+    public Set<Category> getCategoriesSet() {
+        return categories;
+    }
+
+    public void setCategoriesSet(Set<Category> categoriesSet) {
+        this.categories = categoriesSet;
+    }
+
     public Set<Category> getCategories() {
         return categories;
     }
@@ -85,8 +98,8 @@ public class Product {
     public static class Builder {
         private Product product;
 
-        public Builder(Product product) {
-            this.product = product;
+        public Builder() {
+            product = new Product();
         }
 
         public Builder withName(String name) {
@@ -122,7 +135,5 @@ public class Product {
         public Product build() {
             return product;
         }
-
-
     }
 }

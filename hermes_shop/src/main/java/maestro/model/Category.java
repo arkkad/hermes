@@ -1,8 +1,7 @@
 package maestro.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity
 @Table(name = "categories")
@@ -15,16 +14,6 @@ public class Category {
     @Column(name = "category_name", nullable = false)
     private String name;
 
-//    @ManyToMany(mappedBy = "categories")
-//    private Set<Product> productSet = new HashSet<>();
-
-    public String getName() {
-        return name;
-    }
-
-//    public Set<Product> getProductSet() {
-//        return productSet;
-//    }
 
     public Category() {
     }
@@ -32,4 +21,18 @@ public class Category {
     public Category(String name) {
         this.name = name;
     }
+
+    public Category(String name, Collection<Product> productSet) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }
