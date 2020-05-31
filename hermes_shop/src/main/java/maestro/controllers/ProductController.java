@@ -1,27 +1,34 @@
 package maestro.controllers;
 
-import maestro.model.Category;
+import maestro.dto.NewProductDTO;
 import maestro.repo.CategoriesRepo;
 import maestro.repo.ProductRepo;
+import maestro.sevices.ProductService;
 import maestro.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductRepo productRepo;
-    private final CategoriesRepo categoriesRepo;
+    @Value("${upload.path}")
+    private String uploadPath;
+
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepo productRepo, CategoriesRepo categoriesRepo) {
-        this.productRepo = productRepo;
-        this.categoriesRepo = categoriesRepo;
+    public ProductController(ProductRepo productRepo, CategoriesRepo categoriesRepo, ProductService productService) {
+        this.productService = productService;
     }
 //    @GetMapping("/{category}")
 //    public ResponseEntity<Object> getProductsByCategory(@PathVariable("category") String category) {
@@ -32,7 +39,24 @@ public class ProductController {
 
     @GetMapping("/all")
     public ResponseEntity<Object> getAllProducts() {
-        return Util.createResponseEntity(productRepo.findAll());
+        return Util.createResponseEntity(productService.findAllProducts());
     }
+
+    @PostMapping("/addProduct")
+    public ResponseEntity<Object> addProduct(@ModelAttribute NewProductDTO productDTO,
+                                             @RequestParam(required = false, name = "file") MultipartFile file) throws IOException {
+        String resultFileName = "default.jpeg";
+        if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
+            File fileDir = new File(uploadPath);
+            if (!fileDir.exists()) {
+                fileDir.mkdir();
+            }
+            String uuidFileId = UUID.randomUUID().toString();
+            resultFileName = uuidFileId + "." + file.getOriginalFilename();
+            file.transferTo(new File(uploadPath + "/" + resultFileName));
+        }
+        return Util.createResponseEntity(productService.addProduct(productDTO, resultFileName));
+    }
+
 
 }

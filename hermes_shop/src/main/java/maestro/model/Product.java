@@ -28,8 +28,8 @@ public class Product {
     @Column(name = "storage_count", nullable = false)
     private int storageCount;
 
-    @Column(name = "product_pic")
-    private String pic_path;
+    @Column(name = "product_filename")
+    private String filename;
 
 
     @Fetch(FetchMode.SUBSELECT)
@@ -43,7 +43,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, storageCount, pic_path, categories);
+        return Objects.hash(id, name, description, price, storageCount, filename, categories);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Product {
                 Objects.equals(description, product.description) &&
                 Objects.equals(price, product.price) &&
                 Objects.equals(storageCount, product.storageCount) &&
-                Objects.equals(pic_path, product.pic_path) &&
+                Objects.equals(filename, product.filename) &&
                 Objects.equals(categories, product.categories);
     }
 
@@ -79,8 +79,8 @@ public class Product {
         return storageCount;
     }
 
-    public String getPic_path() {
-        return pic_path;
+    public String getFilename() {
+        return filename;
     }
 
     public Set<Category> getCategoriesSet() {
@@ -122,8 +122,8 @@ public class Product {
             return this;
         }
 
-        public Builder withPicPath(String picPath) {
-            product.pic_path = picPath;
+        public Builder withFilename(String filename) {
+            product.filename = filename;
             return this;
         }
 

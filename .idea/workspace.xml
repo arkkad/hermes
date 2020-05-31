@@ -4,12 +4,9 @@
     <list default="true" id="f3a4e0ae-3562-46f9-88f3-d21ee5f7601c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/CategoriesRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/repo/CategoriesRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/db/migration/V1__Init_DB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/db/migration/V1__Init_DB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -38,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react_test_kafka_mailsender" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -48,14 +45,14 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hermes_shop_mailsender" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="mailsender.dto" />
       <recent name="maestro.model" />
       <recent name="maestro.exceptions" />
       <recent name="maestro.config.security" />
-      <recent name="mailsender.dto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hermes_shop_mailsender" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HermesOnlineShopApplication">
@@ -121,10 +118,14 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="198" y="354" width="719" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588274985896" />
-    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1590004849387">
+    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1590856741920">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590004849387" />
+    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590856741920" />
+    <state x="773" y="330" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1590856188183">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="773" y="330" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1590856188183" />
     <state x="160" y="478" width="722" height="151" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1587993302454">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -133,50 +134,50 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="279" y="435" width="484" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/67.27.1853.1053@67.27.1853.1053" timestamp="1587403583408" />
-    <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588249097690">
+    <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590923186484">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588249097690" />
+    <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1590923186483" />
     <state x="833" y="308" width="309" height="488" key="EnvironmentVariablesDialog" timestamp="1588275152170">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="833" y="308" width="309" height="488" key="EnvironmentVariablesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588275152170" />
-    <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590485642165">
+    <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590943534101">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590485642165" />
-    <state width="1807" height="321" key="GridCell.Tab.0.bottom" timestamp="1590522875920">
+    <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590943534101" />
+    <state width="1807" height="305" key="GridCell.Tab.0.bottom" timestamp="1590946912445">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590522875920" />
-    <state width="1807" height="321" key="GridCell.Tab.0.center" timestamp="1590522875918">
+    <state width="1807" height="305" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912445" />
+    <state width="1807" height="305" key="GridCell.Tab.0.center" timestamp="1590946912444">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590522875918" />
-    <state width="1807" height="321" key="GridCell.Tab.0.left" timestamp="1590522875917">
+    <state width="1807" height="305" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912444" />
+    <state width="1807" height="305" key="GridCell.Tab.0.left" timestamp="1590946912444">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590522875917" />
-    <state width="1807" height="321" key="GridCell.Tab.0.right" timestamp="1590522875919">
+    <state width="1807" height="305" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912444" />
+    <state width="1807" height="305" key="GridCell.Tab.0.right" timestamp="1590946912445">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590522875919" />
-    <state width="1807" height="578" key="GridCell.Tab.1.bottom" timestamp="1590487477733">
+    <state width="1807" height="305" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912445" />
+    <state width="1807" height="305" key="GridCell.Tab.1.bottom" timestamp="1590946912451">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="578" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590487477733" />
-    <state width="1807" height="578" key="GridCell.Tab.1.center" timestamp="1590487477732">
+    <state width="1807" height="305" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912451" />
+    <state width="1807" height="305" key="GridCell.Tab.1.center" timestamp="1590946912450">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="578" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590487477732" />
-    <state width="1807" height="578" key="GridCell.Tab.1.left" timestamp="1590487477731">
+    <state width="1807" height="305" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912450" />
+    <state width="1807" height="305" key="GridCell.Tab.1.left" timestamp="1590946912449">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="578" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590487477731" />
-    <state width="1807" height="578" key="GridCell.Tab.1.right" timestamp="1590487477732">
+    <state width="1807" height="305" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912449" />
+    <state width="1807" height="305" key="GridCell.Tab.1.right" timestamp="1590946912450">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="578" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590487477732" />
+    <state width="1807" height="305" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912450" />
     <state x="113" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1589979944146">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -205,24 +206,13 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="381" y="386" width="1372" height="592" key="new project wizard/67.27.1853.1053@67.27.1853.1053" timestamp="1588243081383" />
-    <state x="657" y="253" key="run.anything.popup" timestamp="1588796298868">
+    <state x="657" y="253" key="run.anything.popup" timestamp="1590946000947">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1588796298868" />
+    <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590946000947" />
     <state x="193" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589486884269">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="193" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1589486884269" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/ProductController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
