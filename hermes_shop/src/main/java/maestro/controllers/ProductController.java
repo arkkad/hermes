@@ -19,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
 
     @Value("${upload.path}")
