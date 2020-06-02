@@ -1,7 +1,6 @@
 package maestro.controllers;
 
 import maestro.dto.NewProductDTO;
-import maestro.repo.CategoriesRepo;
 import maestro.repo.ProductRepo;
 import maestro.sevices.ProductService;
 import maestro.util.Util;
@@ -13,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -28,7 +26,7 @@ public class ProductController {
     private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepo productRepo, CategoriesRepo categoriesRepo, ProductService productService) {
+    public ProductController(ProductRepo productRepo,  ProductService productService) {
         this.productService = productService;
     }
 //    @GetMapping("/{category}")
@@ -57,6 +55,17 @@ public class ProductController {
             file.transferTo(new File(uploadPath + "/" + resultFileName));
         }
         return Util.createResponseEntity(productService.addProduct(productDTO, resultFileName));
+    }
+
+    @GetMapping("delete/{productId}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ResponseEntity<Object> deleteProducts(@PathVariable("productId") String name){
+        try {
+            productService.deleteProductByName(name);
+            return Util.createResponseEntity("Product deleted");
+        }catch (Exception e){
+            return Util.createResponseEntity("Error" + e);
+        }
     }
 
 

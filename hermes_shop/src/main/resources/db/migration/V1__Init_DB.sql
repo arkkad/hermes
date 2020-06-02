@@ -26,27 +26,17 @@ create table products (
     id int8 not null,
     description TEXT,
     product_name varchar(255) not null,
-    product_pic varchar(255),
+    product_filename varchar(255),
     product_price float8 not null,
     storage_count int4 not null,
     primary key (id));
 
-create table categories (
-    id int8 not null,
-    category_name varchar(255) not null,
-    primary key (id));
-
 create table product_categories (
-    products_id int8 not null references products,
-    category_id int8 not null references categories,
-    primary key (products_id, category_id));
+    product_id int8 not null,
+    categories varchar(255));
 
 create sequence hibernate_sequence start 1 increment 1;
 
 alter table if exists product_categories
-    add constraint FKd112rx0alycddsms029iifrih
-    foreign key (category_id) references categories;
-
-alter table if exists product_categories
-    add constraint FK5kk67cfwknx90m45vlonphntg
-    foreign key (products_id) references products;
+    add constraint FKlda9rad6s180ha3dl1ncsp8n7
+    foreign key (product_id) references products;

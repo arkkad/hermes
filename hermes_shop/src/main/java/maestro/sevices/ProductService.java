@@ -1,9 +1,7 @@
 package maestro.sevices;
 
 import maestro.dto.NewProductDTO;
-import maestro.model.Category;
 import maestro.model.Product;
-import maestro.repo.CategoriesRepo;
 import maestro.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,21 +14,16 @@ import java.util.Set;
 public class ProductService implements IProductService {
 
     private final ProductRepo productRepo;
-    private final CategoriesRepo categoriesRepo;
 
     @Autowired
-    public ProductService(ProductRepo productRepo, CategoriesRepo categoriesRepo) {
+    public ProductService(ProductRepo productRepo) {
         this.productRepo = productRepo;
-        this.categoriesRepo = categoriesRepo;
     }
 
     @Override
     public boolean addProduct(NewProductDTO newProductDTO, String filename) {
         try {
-            Set<Category> cats = new HashSet<>();
-            for (String c : newProductDTO.getCategories()) {
-                cats.add(categoriesRepo.findByName(c));
-            }
+            Set<String> cats = new HashSet<>(newProductDTO.getCategories());
             Product product = new Product.Builder()
                     .withName(newProductDTO.getName())
                     .withDesc(newProductDTO.getDescription())
@@ -39,7 +32,6 @@ public class ProductService implements IProductService {
                     .withFilename(filename)
                     .withCategories(cats)
                     .build();
-
             productRepo.save(product);
             return true;
         } catch (Exception e) {
@@ -49,7 +41,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public void deleteProductByName(String name) {
+        productRepo.delete(productRepo.findByName(name));
+    }
+
+    @Override
     public List<Product> findAllProducts() {
-        return productRepo.findAll();
+        List<Product> all = productRepo.findAll();
+        return all;
     }
 }

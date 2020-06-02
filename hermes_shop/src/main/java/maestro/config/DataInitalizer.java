@@ -1,9 +1,7 @@
 package maestro.config;
 
-import maestro.model.Category;
 import maestro.model.Product;
 import maestro.model.User;
-import maestro.repo.CategoriesRepo;
 import maestro.repo.ProductRepo;
 import maestro.repo.UserRepository;
 import maestro.util.Constants;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 @Component
@@ -23,9 +22,6 @@ public class DataInitalizer implements CommandLineRunner {
 
     @Autowired
     UserRepository userRepository;
-
-    @Autowired
-    CategoriesRepo categoriesRepo;
 
     @Autowired
     ProductRepo productRepo;
@@ -49,19 +45,18 @@ public class DataInitalizer implements CommandLineRunner {
 //                .withDateJoined(LocalDateTime.now(Clock.systemUTC()))
 //                .withRoles(strings)
 //                .build());
-//
+
 //        for (int i = 0; i < 5; i++) {
-//            Set<Category> categorySet = new HashSet<>();
-//            Category category = categoriesRepo.findByName(Constants.PHONES_CATEGORY);
-//            categorySet.add(category);
+//            Set<String> categorySet = new HashSet<>();
+//            categorySet.add(Constants.PHONES_CATEGORY);
 //            Product product = new Product.Builder()
 //                    .withName("Iphone 11" + i)
 //                    .withDesc("Iphone")
 //                    .withPrice(1000)
 //                    .withStorageCount(10)
+//                    .withFilename("eaebdbb1-d3ab-4454-be03-e04102ca5e4b.220px-IPhone_6s_vector.svg.png")
 //                    .withCategories(categorySet)
 //                    .build();
-//            categoriesRepo.save(category);
 //            productRepo.save(product);
 //        }
     }

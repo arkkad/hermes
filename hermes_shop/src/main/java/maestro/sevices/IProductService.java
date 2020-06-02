@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IProductService {
     boolean addProduct(NewProductDTO newProductDTO, String filename);
+    void deleteProductByName (String name);
     List<Product> findAllProducts();
 }

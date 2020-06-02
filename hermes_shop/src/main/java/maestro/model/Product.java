@@ -16,7 +16,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "product_name", nullable = false)
+    @Column(name = "product_name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "description")
@@ -32,14 +32,8 @@ public class Product {
     private String filename;
 
 
-    @Fetch(FetchMode.SUBSELECT)
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "product_categories",
-            joinColumns = {@JoinColumn(name = "products_id")},
-            inverseJoinColumns = {@JoinColumn(name = "category_id")}
-    )
-    private Set<Category> categories = new HashSet<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> categories = new HashSet<>();
 
     @Override
     public int hashCode() {
@@ -83,15 +77,15 @@ public class Product {
         return filename;
     }
 
-    public Set<Category> getCategoriesSet() {
+    public Set<String> getCategoriesSet() {
         return categories;
     }
 
-    public void setCategoriesSet(Set<Category> categoriesSet) {
+    public void setCategoriesSet(Set<String> categoriesSet) {
         this.categories = categoriesSet;
     }
 
-    public Set<Category> getCategories() {
+    public Set<String> getCategories() {
         return categories;
     }
 
@@ -127,7 +121,7 @@ public class Product {
             return this;
         }
 
-        public Builder withCategories(Set<Category> categories) {
+        public Builder withCategories(Set<String> categories) {
             product.categories = categories;
             return this;
         }
