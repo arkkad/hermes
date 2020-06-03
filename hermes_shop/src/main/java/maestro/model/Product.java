@@ -57,6 +57,38 @@ public class Product {
     public Product() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setStorageCount(int storageCount) {
+        this.storageCount = storageCount;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public void setCategories(Set<String> categories) {
+        this.categories = categories;
+    }
+
     public String getName() {
         return name;
     }

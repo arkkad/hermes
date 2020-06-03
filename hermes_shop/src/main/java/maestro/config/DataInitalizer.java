@@ -46,7 +46,7 @@ public class DataInitalizer implements CommandLineRunner {
 //                .withRoles(strings)
 //                .build());
 
-//        for (int i = 0; i < 5; i++) {
+//        for (int i = 0; i < 50; i++) {
 //            Set<String> categorySet = new HashSet<>();
 //            categorySet.add(Constants.PHONES_CATEGORY);
 //            Product product = new Product.Builder()
