@@ -5,7 +5,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "contacts")
+@Table(name = "user_contacts")
 public class UserContact {
     @Id
     @Column(name = "id", nullable = false, unique = true)

@@ -1,4 +1,4 @@
-package maestro.sevices;
+package maestro.sevices.imp;
 
 import maestro.repo.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

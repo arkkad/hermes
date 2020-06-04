@@ -31,7 +31,6 @@ public class Product {
     @Column(name = "product_filename")
     private String filename;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> categories = new HashSet<>();
 
@@ -119,6 +118,10 @@ public class Product {
 
     public Set<String> getCategories() {
         return categories;
+    }
+
+    public boolean isAvailable() {
+        return this.getStorageCount() > 0;
     }
 
     public static class Builder {

@@ -115,6 +115,66 @@ public class User implements UserDetails {
         return Objects.hash(id, email, password, fullName, isEmailVerified, dateJoined, verificationCode, isActive, roles, username);
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        isEmailVerified = emailVerified;
+    }
+
+    public void setDateJoined(LocalDateTime dateJoined) {
+        this.dateJoined = dateJoined;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public UserContact getUserContact() {
+        return userContact;
+    }
+
+    public void setUserContact(UserContact userContact) {
+        this.userContact = userContact;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
     public String getFullName() {
         return fullName;
     }

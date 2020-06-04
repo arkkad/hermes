@@ -1,12 +1,14 @@
-package maestro.sevices;
+package maestro.sevices.imp;
 
 import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
 import maestro.model.User;
 import maestro.repo.UserRepository;
+import maestro.sevices.IUserService;
 import maestro.sevices.processing.KafkaMessageProducer;
 import maestro.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,12 @@ public class UserService implements IUserService {
     @Override
     public void deleteUserById(UUID id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.orElseThrow(() -> new UsernameNotFoundException("Username: "+ username + " not found"));
     }
 
     private String generateRandomNumericString() {

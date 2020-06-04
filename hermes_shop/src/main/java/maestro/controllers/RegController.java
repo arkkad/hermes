@@ -1,14 +1,11 @@
 package maestro.controllers;
 
 import maestro.dto.NewUserDTO;
-import maestro.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import maestro.sevices.UserService;
+import maestro.sevices.imp.UserService;
 import maestro.util.Util;
-
-import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController

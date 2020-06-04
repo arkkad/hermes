@@ -5,17 +5,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cart_item")
-public class CartItem implements Serializable {
+@Table(name = "shopping_cart_item")
+public class ShoppingCartItem implements Serializable {
     private static final long serialVersionUID = -3995571478236070123L;
 
     @EmbeddedId
-    private CartItemId pk = new CartItemId();
+    private ShoppingCartItemId pk = new ShoppingCartItemId();
 
-    @MapsId("cartId")
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    @MapsId("shopping_cart_id")
+    @JoinColumn(name = "shopping_cart_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private ShoppingCart shoppingCart;
+    private ShoppingCart shopping_cart;
 
     @MapsId("productId")
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -25,12 +25,12 @@ public class CartItem implements Serializable {
     @Column(name = "quantity")
     private int quantity;
 
-    public CartItem() {
+    public ShoppingCartItem() {
     }
 
-    public CartItem(ShoppingCart shoppingCart, Product product, int quantity) {
-        this.pk = new CartItemId(shoppingCart.getId(), product.getId());
-        this.shoppingCart = shoppingCart;
+    public ShoppingCartItem(ShoppingCart shoppingCart, Product product, int quantity) {
+        this.pk = new ShoppingCartItemId(shoppingCart.getId(), product.getId());
+        this.shopping_cart = shoppingCart;
         this.product = product;
         this.quantity = quantity;
     }
@@ -48,11 +48,11 @@ public class CartItem implements Serializable {
     }
 
     public ShoppingCart getOrder() {
-        return shoppingCart;
+        return shopping_cart;
     }
 
     public void setOrder(ShoppingCart cart) {
-        this.shoppingCart = cart;
+        this.shopping_cart = cart;
         pk.setCart(cart.getId());
     }
 
@@ -73,7 +73,7 @@ public class CartItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CartItem that = (CartItem) o;
+        ShoppingCartItem that = (ShoppingCartItem) o;
         return Objects.equals(pk, that.pk);
     }
 

@@ -18,8 +18,8 @@ public class ShoppingCart implements Serializable {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true,
-            targetEntity = CartItem.class, mappedBy = "cart")
-    private List<CartItem> cartItems = new ArrayList<>(0);
+            targetEntity = ShoppingCartItem.class, mappedBy = "shopping_cart")
+    private List<ShoppingCartItem> cartItems = new ArrayList<>(0);
 
     @Column(name = "witDelivery", nullable = false)
     private boolean withDelivery = false;
@@ -40,14 +40,14 @@ public class ShoppingCart implements Serializable {
         return cartItems.isEmpty();
     }
 
-    public CartItem update(Product product, int newQuantity) {
+    public ShoppingCartItem update(Product product, int newQuantity) {
         if (product == null)
             return null;
-        CartItem updateItem = null;
+        ShoppingCartItem updateItem = null;
         if (newQuantity > 0) {
-            CartItem existingItem = findItem(product.getId());
+            ShoppingCartItem existingItem = findItem(product.getId());
             if (existingItem == null) {
-                CartItem newItem = new CartItem(this, product, newQuantity);
+                ShoppingCartItem newItem = new ShoppingCartItem(this, product, newQuantity);
                 cartItems.add(newItem);
                 updateItem = newItem;
             } else {
@@ -65,8 +65,8 @@ public class ShoppingCart implements Serializable {
         cartItems.removeIf(item -> item.getProduct().getId() == productId);
     }
 
-    private CartItem findItem(Long productId) {
-        for (CartItem existingItem : cartItems) {
+    private ShoppingCartItem findItem(Long productId) {
+        for (ShoppingCartItem existingItem : cartItems) {
             if (existingItem.getProduct().getId() == productId)
                 return existingItem;
         }
@@ -75,7 +75,7 @@ public class ShoppingCart implements Serializable {
 
     private double calculateItemsCost() {
         return cartItems.stream()
-                .mapToDouble(CartItem::calculateCost)
+                .mapToDouble(ShoppingCartItem::calculateCost)
                 .sum();
     }
 
@@ -100,11 +100,11 @@ public class ShoppingCart implements Serializable {
         this.user = user;
     }
 
-    public List<CartItem> getCartItems() {
+    public List<ShoppingCartItem> getCartItems() {
         return Collections.unmodifiableList(cartItems);
     }
 
-    public void setCartItems(List<CartItem> cartItems) {
+    public void setCartItems(List<ShoppingCartItem> cartItems) {
         this.cartItems = cartItems;
         itemsCost = calculateItemsCost();
     }
@@ -143,7 +143,7 @@ public class ShoppingCart implements Serializable {
     public class Builder {
         private long id;
         private User user;
-        private List<CartItem> cartItems = new ArrayList<>(0);
+        private List<ShoppingCartItem> cartItems = new ArrayList<>(0);
         private boolean withDelivery = false;
         private double itemsCost;
 
@@ -179,7 +179,7 @@ public class ShoppingCart implements Serializable {
             return this;
         }
 
-        public Builder setCartItems(List<CartItem> cartItems) {
+        public Builder setCartItems(List<ShoppingCartItem> cartItems) {
             this.cartItems = cartItems;
             return this;
         }

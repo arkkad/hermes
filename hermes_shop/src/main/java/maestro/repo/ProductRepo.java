@@ -1,11 +1,11 @@
 package maestro.repo;
 
 import maestro.model.Product;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepo extends JpaRepository<Product, Long> {
-//    @Query("SELECT ")
-//    Set<Product> findByCategory(Category category);
+import java.util.Optional;
 
+public interface ProductRepo extends JpaRepository<Product, Long> {
     Product findByName(String name);
 }

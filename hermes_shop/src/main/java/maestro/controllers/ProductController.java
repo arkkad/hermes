@@ -2,7 +2,7 @@ package maestro.controllers;
 
 import maestro.dto.NewProductDTO;
 import maestro.repo.ProductRepo;
-import maestro.sevices.ProductService;
+import maestro.sevices.imp.ProductService;
 import maestro.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +38,7 @@ public class ProductController {
 
     @GetMapping("/all")
     public ResponseEntity<Object> getAllProducts() {
-        return Util.createResponseEntity(productService.findAllProducts());
+        return Util.createResponseEntity(productService.findAll());
     }
 
     @PostMapping("/addProduct")
@@ -54,7 +54,7 @@ public class ProductController {
             resultFileName = uuidFileId + "." + file.getOriginalFilename();
             file.transferTo(new File(uploadPath + "/" + resultFileName));
         }
-        return Util.createResponseEntity(productService.addProduct(productDTO, resultFileName));
+        return Util.createResponseEntity(productService.createProduct(productDTO, resultFileName));
     }
 
     @GetMapping("delete/{productId}")

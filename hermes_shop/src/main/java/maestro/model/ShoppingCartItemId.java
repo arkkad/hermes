@@ -5,26 +5,25 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class CartItemId implements Serializable {
-    private static final long serialVersionUID = -1255025293895062037L;
+public class ShoppingCartItemId implements Serializable {
 
-    private long cartId;
+    private long shoppingCartItemId;
     private long productId;
 
-    public CartItemId() {
+    public ShoppingCartItemId() {
     }
 
-    public CartItemId(long cartId, long productId) {
-        this.cartId = cartId;
+    public ShoppingCartItemId(long cartId, long productId) {
+        this.shoppingCartItemId = cartId;
         this.productId = productId;
     }
 
     public long getCart() {
-        return cartId;
+        return shoppingCartItemId;
     }
 
     public void setCart(long orderId) {
-        this.cartId = orderId;
+        this.shoppingCartItemId = orderId;
     }
 
     public long getProduct() {
@@ -39,13 +38,13 @@ public class CartItemId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CartItemId that = (CartItemId) o;
-        return cartId == that.cartId &&
+        ShoppingCartItemId that = (ShoppingCartItemId) o;
+        return shoppingCartItemId == that.shoppingCartItemId &&
                 productId == that.productId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cartId, productId);
+        return Objects.hash(shoppingCartItemId, productId);
     }
 }
