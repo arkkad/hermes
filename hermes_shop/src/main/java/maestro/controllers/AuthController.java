@@ -34,13 +34,15 @@ public class AuthController {
         Set<String> roles = new HashSet<>();
         try {
             String username = data.getUsername();
-            roles  = this.userRepository.findByUsername(username).orElseThrow(() ->new UsernameNotFoundException("Username " + username + "not found")).getRoles();
+            User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username" + username + " not found"));
+            roles  = this.userRepository.findByUsername(username).orElseThrow(() ->new UsernameNotFoundException("Username " + username + " not found")).getRoles();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             String token = jwtTokenProvider.createToken(username, this.userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
             Map<Object, Object> resp = new HashMap<>();
             resp.put("username", username);
             resp.put("token", token);
             resp.put("isAdmin", roles.contains(Constants.ROLE_ADMIN));
+            resp.put("cartItems", user.getShoppingCart().getCartItems().isEmpty());
             return Util.createResponseEntity(resp);
         } catch (AuthenticationException e) {
             System.out.println(e);

@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ShoppingCartRepo extends JpaRepository<ShoppingCart, Long> {
-    Optional<ShoppingCart> findByUserId(UUID id);
+    Optional<ShoppingCart> findByUserId(Long id);
 }

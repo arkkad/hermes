@@ -18,9 +18,8 @@ import static java.util.stream.Collectors.toList;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Type(type = "uuid-char")
     @Column(name = "id", length = 36, nullable = false, updatable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
@@ -46,10 +45,12 @@ public class User implements UserDetails {
     @Column(name = "verification_code")
     private String verificationCode;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
     private ShoppingCart shoppingCart;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER, optional = false)
     private UserContact userContact;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -115,11 +116,11 @@ public class User implements UserDetails {
         return Objects.hash(id, email, password, fullName, isEmailVerified, dateJoined, verificationCode, isActive, roles, username);
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -250,12 +251,12 @@ public class User implements UserDetails {
             return this;
         }
 
-        public Builder withContact(UserContact contact){
+        public Builder withContact(UserContact contact) {
             user.userContact = contact;
             return this;
         }
 
-        public Builder withShippingCart(ShoppingCart cart){
+        public Builder withShoppingCart(ShoppingCart cart) {
             user.shoppingCart = cart;
             return this;
         }

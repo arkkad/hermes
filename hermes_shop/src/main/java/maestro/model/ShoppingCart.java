@@ -13,8 +13,8 @@ public class ShoppingCart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true,
@@ -96,7 +96,7 @@ public class ShoppingCart implements Serializable {
         return user;
     }
 
-    public void setUserContact(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -151,7 +151,7 @@ public class ShoppingCart implements Serializable {
         public Builder() {
         }
 
-        public  Builder(ShoppingCart shoppingCart){
+        public Builder(ShoppingCart shoppingCart) {
             id = shoppingCart.id;
             user = shoppingCart.user;
             cartItems = shoppingCart.cartItems;
@@ -159,7 +159,7 @@ public class ShoppingCart implements Serializable {
             itemsCost = shoppingCart.itemsCost;
         }
 
-        public ShoppingCart build(){
+        public ShoppingCart build() {
             ShoppingCart shoppingCart = new ShoppingCart();
             shoppingCart.id = id;
             shoppingCart.user = user;

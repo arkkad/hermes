@@ -21,8 +21,8 @@ public class UserContact {
     @Column(name = "City")
     private String city;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public UserContact() {
