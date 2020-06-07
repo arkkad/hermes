@@ -64,6 +64,12 @@ public class ProductService implements IProductService {
 
     @Override
     @Transactional(readOnly = true)
+    public Product getProductByName(String name) {
+        return productRepo.findByName(name);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<Product> findAll() {
         return productRepo.findAll().stream()
                 .sorted(Comparator.comparing(Product::getName))

@@ -3,7 +3,6 @@ package maestro.sevices.imp;
 import maestro.model.Product;
 import maestro.model.ShoppingCart;
 import maestro.model.User;
-import maestro.repo.ProductRepo;
 import maestro.repo.ShoppingCartRepo;
 import maestro.sevices.IShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +34,16 @@ public class ShoppingCartService implements IShoppingCartService {
         return cartOptional.orElseGet(() -> createCart(user));
     }
 
+
     private ShoppingCart createCart(User user) {
         return shoppingCartRepo.save(new ShoppingCart(user));
     }
 
     @Transactional
     @Override
-    public ShoppingCart addToCart(String username, long productId, int quantity) throws UnknownEntityException, maestro.exceptions.UnknownEntityException {
+    public ShoppingCart addToCart(String username, String productName, int quantity) throws UnknownEntityException, maestro.exceptions.UnknownEntityException {
         ShoppingCart shoppingCart = getCartOrCreate(username);
-        Product product = productService.getProduct(productId);
+        Product product = productService.getProductByName(productName);
         if (product.isAvailable()) {
             shoppingCart.update(product, quantity);
             return shoppingCartRepo.save(shoppingCart);
