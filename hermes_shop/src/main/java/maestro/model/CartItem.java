@@ -5,17 +5,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "shopping_cart_item")
-public class ShoppingCartItem implements Serializable {
-    private static final long serialVersionUID = -3995571478236070123L;
+@Table(name = "cart_item")
+public class CartItem implements Serializable {
 
     @EmbeddedId
-    private ShoppingCartItemId pk = new ShoppingCartItemId();
+    private CartItemId pk = new CartItemId();
 
-    @MapsId("shopping_cart_id")
-    @JoinColumn(name = "shopping_cart_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private ShoppingCart shopping_cart;
+    @JoinColumn(name = "cart_id")
+    @ManyToOne
+    private Cart cart;
 
     @MapsId("productId")
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -25,12 +23,12 @@ public class ShoppingCartItem implements Serializable {
     @Column(name = "quantity")
     private int quantity;
 
-    public ShoppingCartItem() {
+    public CartItem() {
     }
 
-    public ShoppingCartItem(ShoppingCart shoppingCart, Product product, int quantity) {
-        this.pk = new ShoppingCartItemId(shoppingCart.getId(), product.getId());
-        this.shopping_cart = shoppingCart;
+    public CartItem(Cart shoppingCart, Product product, int quantity) {
+        this.pk = new CartItemId(shoppingCart.getId(), product.getId());
+        this.cart = shoppingCart;
         this.product = product;
         this.quantity = quantity;
     }
@@ -47,12 +45,12 @@ public class ShoppingCartItem implements Serializable {
         this.quantity = quantity;
     }
 
-    public ShoppingCart getOrder() {
-        return shopping_cart;
+    public Cart getOrder() {
+        return cart;
     }
 
-    public void setOrder(ShoppingCart cart) {
-        this.shopping_cart = cart;
+    public void setOrder(Cart cart) {
+        this.cart = cart;
         pk.setCart(cart.getId());
     }
 
@@ -65,6 +63,22 @@ public class ShoppingCartItem implements Serializable {
         pk.setProduct(product.getId());
     }
 
+    public CartItemId getPk() {
+        return pk;
+    }
+
+    public void setPk(CartItemId pk) {
+        this.pk = pk;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -73,7 +87,7 @@ public class ShoppingCartItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ShoppingCartItem that = (ShoppingCartItem) o;
+        CartItem that = (CartItem) o;
         return Objects.equals(pk, that.pk);
     }
 

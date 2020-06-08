@@ -1,11 +1,11 @@
 package maestro.config;
 
+import maestro.model.Cart;
 import maestro.model.Product;
-import maestro.model.ShoppingCart;
 import maestro.model.User;
 import maestro.model.UserContact;
 import maestro.repo.ProductRepo;
-import maestro.repo.ShoppingCartRepo;
+import maestro.repo.CartRepo;
 import maestro.repo.UserContactsRepo;
 import maestro.repo.UserRepository;
 import maestro.util.Constants;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 @Component
@@ -27,7 +26,7 @@ public class DataInitalizer implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    ShoppingCartRepo shoppingCartRepo;
+    CartRepo shoppingCartRepo;
     @Autowired
     UserContactsRepo userContactsRepo;
     @Autowired
@@ -43,7 +42,7 @@ public class DataInitalizer implements CommandLineRunner {
 //        HashSet<String> strings = new HashSet<>();
 //        strings.add("ROLE_ADMIN");
 //        UserContact userContact = new UserContact();
-//        ShoppingCart shoppingCart = new ShoppingCart();
+//        Cart shoppingCart = new Cart();
 //        User user = new User.Builder()
 //                .withName("admin")
 //                .withEmail("123@123.com")

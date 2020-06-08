@@ -1,6 +1,5 @@
 package maestro.model;
 
-import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,7 +46,7 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
-    private ShoppingCart shoppingCart;
+    private Cart shoppingCart;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, optional = false)
@@ -156,11 +155,11 @@ public class User implements UserDetails {
         this.verificationCode = verificationCode;
     }
 
-    public ShoppingCart getShoppingCart() {
+    public Cart getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(ShoppingCart shoppingCart) {
+    public void setShoppingCart(Cart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 
@@ -256,7 +255,7 @@ public class User implements UserDetails {
             return this;
         }
 
-        public Builder withShoppingCart(ShoppingCart cart) {
+        public Builder withShoppingCart(Cart cart) {
             user.shoppingCart = cart;
             return this;
         }

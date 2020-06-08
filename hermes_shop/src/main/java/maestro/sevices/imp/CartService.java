@@ -1,10 +1,10 @@
 package maestro.sevices.imp;
 
 import maestro.model.Product;
-import maestro.model.ShoppingCart;
+import maestro.model.Cart;
 import maestro.model.User;
-import maestro.repo.ShoppingCartRepo;
-import maestro.sevices.IShoppingCartService;
+import maestro.repo.CartRepo;
+import maestro.sevices.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,13 +14,13 @@ import javax.lang.model.UnknownEntityException;
 import java.util.Optional;
 
 @Service
-public class ShoppingCartService implements IShoppingCartService {
-    private final ShoppingCartRepo shoppingCartRepo;
+public class CartService implements ICartService {
+    private final CartRepo shoppingCartRepo;
     private final ProductService productService;
     private final UserService userService;
 
     @Autowired
-    public ShoppingCartService(ShoppingCartRepo shoppingCartRepo, ProductService productService, UserService userService) {
+    public CartService(CartRepo shoppingCartRepo, ProductService productService, UserService userService) {
         this.shoppingCartRepo = shoppingCartRepo;
         this.productService = productService;
         this.userService = userService;
@@ -28,39 +28,44 @@ public class ShoppingCartService implements IShoppingCartService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public ShoppingCart getCartOrCreate(String username) {
+    public Cart getCartOrCreate(String username) {
         User user = userService.findByUsername(username);
-        Optional<ShoppingCart> cartOptional = shoppingCartRepo.findByUserId(user.getId());
+        Optional<Cart> cartOptional = shoppingCartRepo.findByUserId(user.getId());
         return cartOptional.orElseGet(() -> createCart(user));
     }
 
 
-    private ShoppingCart createCart(User user) {
-        return shoppingCartRepo.save(new ShoppingCart(user));
+    private Cart createCart(User user) {
+        return shoppingCartRepo.save(new Cart(user));
     }
 
     @Transactional
     @Override
-    public ShoppingCart addToCart(String username, String productName, int quantity) throws UnknownEntityException, maestro.exceptions.UnknownEntityException {
-        ShoppingCart shoppingCart = getCartOrCreate(username);
+    public Cart addToCart(String username, String productName, int quantity) throws UnknownEntityException {
+        Cart cart = getCartOrCreate(username);
         Product product = productService.getProductByName(productName);
         if (product.isAvailable()) {
-            shoppingCart.update(product, quantity);
-            return shoppingCartRepo.save(shoppingCart);
-        } else return shoppingCart;
+            cart.update(product, quantity);
+            try {
+                return shoppingCartRepo.save(cart);
+            } catch (Exception e) {
+                System.out.println(e);
+                return cart;
+            }
+        } else return cart;
     }
 
     @Transactional
     @Override
-    public ShoppingCart setDelivery(String username, boolean deliveryIncluded) {
-        ShoppingCart shoppingCart = getCartOrCreate(username);
+    public Cart setDelivery(String username, boolean deliveryIncluded) {
+        Cart shoppingCart = getCartOrCreate(username);
         shoppingCart.setWithDelivery(deliveryIncluded);
         return shoppingCartRepo.save(shoppingCart);
     }
 
     @Override
-    public ShoppingCart clearCart(String username) {
-        ShoppingCart shoppingCart = getCartOrCreate(username);
+    public Cart clearCart(String username) {
+        Cart shoppingCart = getCartOrCreate(username);
         shoppingCart.clear();
         return shoppingCartRepo.save(shoppingCart);
     }
