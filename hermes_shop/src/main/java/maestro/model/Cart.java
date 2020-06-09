@@ -55,14 +55,14 @@ public class Cart implements Serializable {
                 updateItem = existingItem;
             }
         } else {
-            removeItem(product.getId());
+            removeItem(product.getName());
         }
         itemsCost = calculateItemsCost();
         return updateItem;
     }
 
-    private void removeItem(Long productId) {
-        cartItems.removeIf(item -> item.getProduct().getId() == productId);
+    public void removeItem(String productName) {
+        cartItems.removeIf(item -> item.getProduct().getName().equals(productName));
     }
 
     private CartItem findItem(Long productId) {

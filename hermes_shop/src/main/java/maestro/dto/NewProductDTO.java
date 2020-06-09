@@ -21,6 +21,14 @@ public class NewProductDTO {
         this.categories = categories;
     }
 
+    public NewProductDTO(String name, String description, double price, int storageCount, String pic_path) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.storageCount = storageCount;
+        this.categories = categories;
+    }
+
     public String getName() {
         return name;
     }

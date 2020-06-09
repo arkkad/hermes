@@ -1,5 +1,8 @@
 package maestro.sevices.imp;
 
+import maestro.dto.CartItemDTO;
+import maestro.dto.NewProductDTO;
+import maestro.model.CartItem;
 import maestro.model.Product;
 import maestro.model.Cart;
 import maestro.model.User;
@@ -11,6 +14,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.lang.model.UnknownEntityException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -41,18 +47,17 @@ public class CartService implements ICartService {
 
     @Transactional
     @Override
-    public Cart addToCart(String username, String productName, int quantity) throws UnknownEntityException {
+    public void addToCart(String username, String productName, int quantity) throws UnknownEntityException {
         Cart cart = getCartOrCreate(username);
         Product product = productService.getProductByName(productName);
         if (product.isAvailable()) {
             cart.update(product, quantity);
             try {
-                return shoppingCartRepo.save(cart);
+                shoppingCartRepo.save(cart);
             } catch (Exception e) {
                 System.out.println(e);
-                return cart;
             }
-        } else return cart;
+        }
     }
 
     @Transactional
@@ -68,5 +73,45 @@ public class CartService implements ICartService {
         Cart shoppingCart = getCartOrCreate(username);
         shoppingCart.clear();
         return shoppingCartRepo.save(shoppingCart);
+    }
+
+    @Override
+    public List<CartItemDTO> getAllCartItems(String username) {
+        List<CartItem> cartItems;
+        List<CartItemDTO> cartItemDTOs = new ArrayList<>();
+        double total;
+        User user = userService.findByUsername(username);
+        Optional<Cart> cartOptional = shoppingCartRepo.findByUserId(user.getId());
+        cartItems = cartOptional.orElseThrow(NoSuchElementException::new).getCartItems();
+        for (CartItem item : cartItems) {
+            NewProductDTO newProductDTO = new NewProductDTO();
+            CartItemDTO cartItemDTO = new CartItemDTO();
+            total = item.getProduct().getPrice() * item.getQuantity();
+            newProductDTO.setName(item.getProduct().getName());
+            newProductDTO.setDescription(item.getProduct().getDescription());
+            newProductDTO.setPrice(item.getProduct().getPrice());
+            newProductDTO.setStorageCount(item.getProduct().getStorageCount());
+            cartItemDTO.setProduct(newProductDTO);
+            cartItemDTO.setQuantity(item.getQuantity());
+            cartItemDTO.setTotal(total);
+            cartItemDTOs.add(cartItemDTO);
+        }
+        return cartItemDTOs;
+    }
+
+    @Override
+    public void deleteProductFromCart(String username, String productName) {
+        Cart cart = getCartOrCreate(username);
+        Product product = productService.getProductByName(productName);
+        if (product != null){
+            cart.removeItem(productName);
+        }
+        shoppingCartRepo.save(cart);
+    }
+
+    @Override
+    public int getCartItemsCount(String username) {
+        Cart cart = getCartOrCreate(username);
+        return cart.getCartItems().size();
     }
 }
