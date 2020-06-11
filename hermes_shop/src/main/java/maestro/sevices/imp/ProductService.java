@@ -75,6 +75,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public List<Product> findByName(String category) {
+        return productRepo.findByCategories(category);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Product> findAll() {
         return productRepo.findAll().stream()

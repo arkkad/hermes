@@ -5,6 +5,7 @@ import maestro.exceptions.UnknownEntityException;
 import maestro.model.Product;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 public interface IProductService {
@@ -22,5 +23,7 @@ public interface IProductService {
     void deleteProductByName(String name);
 
     Product getProductByName(String name);
+
+    List<Product> findByName(String category);
 }
 

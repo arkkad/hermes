@@ -1,6 +1,7 @@
 package maestro.controllers;
 
 import maestro.dto.NewProductDTO;
+import maestro.model.Product;
 import maestro.repo.ProductRepo;
 import maestro.sevices.imp.ProductService;
 import maestro.util.Util;
@@ -12,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -29,11 +32,12 @@ public class ProductController {
     public ProductController(ProductRepo productRepo,  ProductService productService) {
         this.productService = productService;
     }
-//    @GetMapping("/{category}")
-//    public ResponseEntity<Object> getProductsByCategory(@PathVariable("category") String category) {
-//        Category cat = categoriesRepo.findByName(category);
-//        return Util.createResponseEntity(productRepo.findByCategory(cat));
-//    }
+
+    @GetMapping("/{category}")
+    public ResponseEntity<Object> getProductsByCategory(@PathVariable("category") String category) {
+        List<Product> cat = productService.findByName(category);
+        return Util.createResponseEntity(cat);
+    }
 
 
     @GetMapping("/all")

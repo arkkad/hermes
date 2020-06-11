@@ -1,5 +1,8 @@
 package maestro.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,6 +21,7 @@ public class CartItem implements Serializable {
 
     @MapsId("productId")
     @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Product product;
 
