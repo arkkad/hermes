@@ -14,4 +14,6 @@ public interface ICartService {
     List<CartItemDTO> getAllCartItems(String username);
     void deleteProductFromCart(String username, String productId);
     int getCartItemsCount(String username);
+    List<Cart> getAllCarts();
+    void saveAll(List<Cart> cartList);
 }

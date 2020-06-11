@@ -7,23 +7,23 @@ import java.util.Objects;
 @Embeddable
 public class CartItemId implements Serializable {
 
-    private long cartItemId;
+    private long cartId;
     private long productId;
 
     public CartItemId() {
     }
 
     public CartItemId(long cartId, long productId) {
-        this.cartItemId = cartId;
+        this.cartId = cartId;
         this.productId = productId;
     }
 
     public long getCart() {
-        return cartItemId;
+        return cartId;
     }
 
     public void setCart(long orderId) {
-        this.cartItemId = orderId;
+        this.cartId = orderId;
     }
 
     public long getProduct() {
@@ -39,12 +39,12 @@ public class CartItemId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CartItemId that = (CartItemId) o;
-        return cartItemId == that.cartItemId &&
+        return cartId == that.cartId &&
                 productId == that.productId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cartItemId, productId);
+        return Objects.hash(cartId, productId);
     }
 }

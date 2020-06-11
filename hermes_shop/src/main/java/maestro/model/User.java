@@ -46,7 +46,7 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
-    private Cart shoppingCart;
+    private Cart cart;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, optional = false)
@@ -105,7 +105,7 @@ public class User implements UserDetails {
                 Objects.equals(dateJoined, user.dateJoined) &&
                 Objects.equals(verificationCode, user.verificationCode) &&
                 Objects.equals(userContact, user.userContact) &&
-                Objects.equals(shoppingCart, user.shoppingCart) &&
+                Objects.equals(cart, user.cart) &&
                 Objects.equals(roles, user.roles);
     }
 
@@ -155,12 +155,12 @@ public class User implements UserDetails {
         this.verificationCode = verificationCode;
     }
 
-    public Cart getShoppingCart() {
-        return shoppingCart;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setShoppingCart(Cart shoppingCart) {
-        this.shoppingCart = shoppingCart;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public UserContact getUserContact() {
@@ -255,8 +255,8 @@ public class User implements UserDetails {
             return this;
         }
 
-        public Builder withShoppingCart(Cart cart) {
-            user.shoppingCart = cart;
+        public Builder withCart(Cart cart) {
+            user.cart = cart;
             return this;
         }
 

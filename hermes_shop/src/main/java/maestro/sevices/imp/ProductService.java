@@ -2,7 +2,10 @@ package maestro.sevices.imp;
 
 import maestro.dto.NewProductDTO;
 import maestro.exceptions.UnknownEntityException;
+import maestro.model.Cart;
+import maestro.model.CartItem;
 import maestro.model.Product;
+import maestro.repo.CartRepo;
 import maestro.repo.ProductRepo;
 import maestro.sevices.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,12 @@ import java.util.stream.Collectors;
 public class ProductService implements IProductService {
 
     private final ProductRepo productRepo;
+    private final CartRepo cartRepo;
 
     @Autowired
-    public ProductService(ProductRepo productRepo) {
+    public ProductService(ProductRepo productRepo, CartRepo cartRepo) {
         this.productRepo = productRepo;
+        this.cartRepo = cartRepo;
     }
 
     @Override
@@ -58,8 +63,9 @@ public class ProductService implements IProductService {
 
     @Override
     @Transactional
-    public void deleteProductByName(String name) {
-        productRepo.delete(productRepo.findByName(name));
+    public void deleteProductByName(String productName) {
+        Product p = productRepo.findByName(productName);
+        productRepo.deleteById(p.getId());
     }
 
     @Override
@@ -86,6 +92,6 @@ public class ProductService implements IProductService {
     @Transactional
     public Product getProduct(Long productId) throws UnknownEntityException {
         return productRepo.findById(productId)
-                .orElseThrow(()-> new UnknownEntityException(Product.class, productId));
+                .orElseThrow(() -> new UnknownEntityException(Product.class, productId));
     }
 }

@@ -11,8 +11,9 @@ public class CartItem implements Serializable {
     @EmbeddedId
     private CartItemId pk = new CartItemId();
 
-    @JoinColumn(name = "cart_id")
-    @ManyToOne
+    @MapsId("cartId")
+    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cart cart;
 
     @MapsId("productId")
@@ -26,9 +27,9 @@ public class CartItem implements Serializable {
     public CartItem() {
     }
 
-    public CartItem(Cart shoppingCart, Product product, int quantity) {
-        this.pk = new CartItemId(shoppingCart.getId(), product.getId());
-        this.cart = shoppingCart;
+    public CartItem(Cart cart, Product product, int quantity) {
+        this.pk = new CartItemId(cart.getId(), product.getId());
+        this.cart = cart;
         this.product = product;
         this.quantity = quantity;
     }
@@ -61,22 +62,6 @@ public class CartItem implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
         pk.setProduct(product.getId());
-    }
-
-    public CartItemId getPk() {
-        return pk;
-    }
-
-    public void setPk(CartItemId pk) {
-        this.pk = pk;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
     }
 
     @Override

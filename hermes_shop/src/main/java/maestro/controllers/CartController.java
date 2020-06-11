@@ -17,32 +17,32 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CartController {
 
-    private final CartService shoppingCartService;
+    private final CartService cartService;
     private final ProductService productService;
 
     @Autowired
     public CartController(CartService shoppingCartService, ProductService productService) {
-        this.shoppingCartService = shoppingCartService;
+        this.cartService = shoppingCartService;
         this.productService = productService;
     }
 
     @GetMapping("/getCart")
     public ResponseEntity<Object> getCart(
             @AuthenticationPrincipal User user) {
-        return Util.createResponseEntity(shoppingCartService.getAllCartItems(user.getUsername()));
+        return Util.createResponseEntity(cartService.getAllCartItems(user.getUsername()));
     }
 
     @GetMapping("/getCartItems")
     public ResponseEntity<Object> getCartItemsCount(
             @AuthenticationPrincipal User user) {
-        return Util.createResponseEntity(shoppingCartService.getCartItemsCount(user.getUsername()));
+        return Util.createResponseEntity(cartService.getCartItemsCount(user.getUsername()));
     }
 
     @PostMapping("/addProduct")
     public ResponseEntity<Object> addToCart(
             @AuthenticationPrincipal User user,
             @RequestBody ProductNameDTO name) throws UnknownEntityException {
-        shoppingCartService.addToCart(user.getUsername(), name.getName(), 2);
+        cartService.addToCart(user.getUsername(), name.getName(), 2);
         return Util.createResponseEntity("ok");
     }
 
@@ -51,7 +51,7 @@ public class CartController {
             @AuthenticationPrincipal User user,
             @PathVariable("productName") String productName) {
         try {
-            shoppingCartService.deleteProductFromCart(user.getUsername(), productName);
+            cartService.deleteProductFromCart(user.getUsername(), productName);
             return Util.createResponseEntity(productName + " deleted.");
         } catch (Exception e) {
             return Util.createResponseEntity(e);

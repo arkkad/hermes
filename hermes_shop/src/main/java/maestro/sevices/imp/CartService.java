@@ -21,13 +21,13 @@ import java.util.Optional;
 
 @Service
 public class CartService implements ICartService {
-    private final CartRepo shoppingCartRepo;
+    private final CartRepo cartRepo;
     private final ProductService productService;
     private final UserService userService;
 
     @Autowired
     public CartService(CartRepo shoppingCartRepo, ProductService productService, UserService userService) {
-        this.shoppingCartRepo = shoppingCartRepo;
+        this.cartRepo = shoppingCartRepo;
         this.productService = productService;
         this.userService = userService;
     }
@@ -36,13 +36,13 @@ public class CartService implements ICartService {
     @Override
     public Cart getCartOrCreate(String username) {
         User user = userService.findByUsername(username);
-        Optional<Cart> cartOptional = shoppingCartRepo.findByUserId(user.getId());
+        Optional<Cart> cartOptional = cartRepo.findByUserId(user.getId());
         return cartOptional.orElseGet(() -> createCart(user));
     }
 
 
     private Cart createCart(User user) {
-        return shoppingCartRepo.save(new Cart(user));
+        return cartRepo.save(new Cart(user));
     }
 
     @Transactional
@@ -53,7 +53,7 @@ public class CartService implements ICartService {
         if (product.isAvailable()) {
             cart.update(product, quantity);
             try {
-                shoppingCartRepo.save(cart);
+                cartRepo.save(cart);
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -65,14 +65,14 @@ public class CartService implements ICartService {
     public Cart setDelivery(String username, boolean deliveryIncluded) {
         Cart shoppingCart = getCartOrCreate(username);
         shoppingCart.setWithDelivery(deliveryIncluded);
-        return shoppingCartRepo.save(shoppingCart);
+        return cartRepo.save(shoppingCart);
     }
 
     @Override
     public Cart clearCart(String username) {
         Cart shoppingCart = getCartOrCreate(username);
         shoppingCart.clear();
-        return shoppingCartRepo.save(shoppingCart);
+        return cartRepo.save(shoppingCart);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class CartService implements ICartService {
         List<CartItemDTO> cartItemDTOs = new ArrayList<>();
         double total;
         User user = userService.findByUsername(username);
-        Optional<Cart> cartOptional = shoppingCartRepo.findByUserId(user.getId());
+        Optional<Cart> cartOptional = cartRepo.findByUserId(user.getId());
         cartItems = cartOptional.orElseThrow(NoSuchElementException::new).getCartItems();
         for (CartItem item : cartItems) {
             NewProductDTO newProductDTO = new NewProductDTO();
@@ -106,12 +106,22 @@ public class CartService implements ICartService {
         if (product != null){
             cart.removeItem(productName);
         }
-        shoppingCartRepo.save(cart);
+        cartRepo.save(cart);
     }
 
     @Override
     public int getCartItemsCount(String username) {
         Cart cart = getCartOrCreate(username);
         return cart.getCartItems().size();
+    }
+
+    @Override
+    public List<Cart> getAllCarts() {
+        return cartRepo.findAll();
+    }
+
+    @Override
+    public void saveAll(List<Cart> cartList) {
+        cartRepo.saveAll(cartList);
     }
 }

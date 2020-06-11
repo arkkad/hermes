@@ -42,7 +42,7 @@ public class AuthController {
             resp.put("username", username);
             resp.put("token", token);
             resp.put("isAdmin", roles.contains(Constants.ROLE_ADMIN));
-            resp.put("cartItems", user.getShoppingCart().getCartItems().size());
+            resp.put("cartItems", user.getCart().getCartItems().size());
             return Util.createResponseEntity(resp);
         } catch (AuthenticationException e) {
             System.out.println(e);

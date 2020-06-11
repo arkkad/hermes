@@ -4,12 +4,10 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -33,6 +31,7 @@ public class Product {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> categories = new HashSet<>();
+
 
     @Override
     public int hashCode() {
