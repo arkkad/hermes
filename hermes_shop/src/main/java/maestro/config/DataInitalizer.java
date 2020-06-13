@@ -39,6 +39,9 @@ public class DataInitalizer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        userRepository.deleteAll();
+        cartRepo.deleteAll();
+        productRepo.deleteAll();
         HashSet<String> strings = new HashSet<>();
         strings.add("ROLE_ADMIN");
         UserContact userContact = new UserContact();

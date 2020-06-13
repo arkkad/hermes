@@ -1,7 +1,5 @@
 package maestro.dto;
 
-import maestro.model.Product;
-
 public class CartItemDTO {
     private NewProductDTO product;
     private int quantity;

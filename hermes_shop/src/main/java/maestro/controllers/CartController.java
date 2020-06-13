@@ -1,6 +1,6 @@
 package maestro.controllers;
 
-import maestro.dto.ProductNameDTO;
+import maestro.dto.ProductDTO;
 import maestro.exceptions.UnknownEntityException;
 import maestro.model.User;
 import maestro.sevices.imp.ProductService;
@@ -41,8 +41,8 @@ public class CartController {
     @PostMapping("/addProduct")
     public ResponseEntity<Object> addToCart(
             @AuthenticationPrincipal User user,
-            @RequestBody ProductNameDTO name) throws UnknownEntityException {
-        cartService.addToCart(user.getUsername(), name.getName(), 2);
+            @RequestBody ProductDTO productDTO) throws UnknownEntityException {
+        cartService.addToCart(user.getUsername(), productDTO.getName(), productDTO.getQuantity());
         return Util.createResponseEntity("ok");
     }
 

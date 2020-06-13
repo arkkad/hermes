@@ -1,6 +1,7 @@
 package maestro.sevices.imp;
 
 import maestro.dto.CartItemDTO;
+import maestro.dto.ListItemsDTO;
 import maestro.dto.NewProductDTO;
 import maestro.model.CartItem;
 import maestro.model.Product;
@@ -76,13 +77,13 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public List<CartItemDTO> getAllCartItems(String username) {
-        List<CartItem> cartItems;
+    public ListItemsDTO getAllCartItems(String username) {
         List<CartItemDTO> cartItemDTOs = new ArrayList<>();
         double total;
+        double priceTotal = 0;
         User user = userService.findByUsername(username);
         Optional<Cart> cartOptional = cartRepo.findByUserId(user.getId());
-        cartItems = cartOptional.orElseThrow(NoSuchElementException::new).getCartItems();
+        List<CartItem> cartItems = cartOptional.orElseThrow(NoSuchElementException::new).getCartItems();
         for (CartItem item : cartItems) {
             NewProductDTO newProductDTO = new NewProductDTO();
             CartItemDTO cartItemDTO = new CartItemDTO();
@@ -95,15 +96,16 @@ public class CartService implements ICartService {
             cartItemDTO.setQuantity(item.getQuantity());
             cartItemDTO.setTotal(total);
             cartItemDTOs.add(cartItemDTO);
+            priceTotal += total;
         }
-        return cartItemDTOs;
+        return new ListItemsDTO(cartItemDTOs, priceTotal);
     }
 
     @Override
     public void deleteProductFromCart(String username, String productName) {
         Cart cart = getCartOrCreate(username);
         Product product = productService.getProductByName(productName);
-        if (product != null){
+        if (product != null) {
             cart.removeItem(productName);
         }
         cartRepo.save(cart);
