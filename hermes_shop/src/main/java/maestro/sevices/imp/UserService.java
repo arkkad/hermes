@@ -31,7 +31,7 @@ public class UserService implements IUserService {
     KafkaMessageProducer kafkaMessageProducer;
 
     @Override
-    public boolean registerNewUser(NewUserDTO newUserDTO) {
+    public User registerNewUser(NewUserDTO newUserDTO) {
         List<User> users = userRepository.findAll();
         Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
         User user;
@@ -42,27 +42,27 @@ public class UserService implements IUserService {
             }
         } else {
             String verificationCode = generateRandomNumericString();
-            user = new User.Builder()
-                    .withName(newUserDTO.getUsername())
-                    .withFullName(newUserDTO.getFullName())
-                    .withPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()))
-                    .withEmail(newUserDTO.getEmail())
-                    .withDateJoined(LocalDateTime.now(Clock.systemUTC()))
-                    .withVerificationCode(verificationCode)
-                    .withActive(true)
-                    .withisEmailVerified(true)
-                    .withRoles(new HashSet<>(Collections.singletonList(Constants.ROLE_USER)))
-                    .build();
+//            user = new User.Builder()
+//                    .withName(newUserDTO.getUsername())
+//                    .withFullName(newUserDTO.getFullName())
+//                    .withPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()))
+//                    .withEmail(newUserDTO.getEmail())
+//                    .withDateJoined(LocalDateTime.now(Clock.systemUTC()))
+//                    .withVerificationCode(verificationCode)
+//                    .withActive(true)
+//                    .withisEmailVerified(true)
+//                    .withRoles(new HashSet<>(Collections.singletonList(Constants.ROLE_USER)))
+//                    .build();
 //            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
-            userRepository.save(user);
-            return true;
+//            userRepository.save(user);
+            return null;
         }
-        return false;
+        return null;
     }
 
     @Override
-    public Optional<User> findUserById(UUID id) {
-        return userRepository.findById(id);
+    public User findUserById(UUID id) {
+        return userRepository.findById(id).orElseThrow(()-> new UsernameNotFoundException("Username " + id + " not found"));
     }
 
     @Override

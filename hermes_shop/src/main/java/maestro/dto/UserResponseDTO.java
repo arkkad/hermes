@@ -1,5 +1,6 @@
 package maestro.dto;
 
+import maestro.model.Role;
 import maestro.model.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class UserResponseDTO {
 
     private Boolean isBanned;
 
-    private Set<String> roles;
+    private Set<Role> roles;
 
     public UserResponseDTO() {
     }
@@ -40,11 +41,11 @@ public class UserResponseDTO {
         isBanned = banned;
     }
 
-    public Set<String> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }

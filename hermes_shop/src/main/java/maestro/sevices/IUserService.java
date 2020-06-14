@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface IUserService {
-    boolean registerNewUser(NewUserDTO newUserDTO);
+    User registerNewUser(NewUserDTO newUserDTO);
 
-    Optional<User> findUserById(UUID id);
+    User findUserById(UUID id);
 
     List<User> getAllUsers();
 

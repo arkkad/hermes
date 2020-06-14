@@ -29,7 +29,7 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/signin")
+/*    @PostMapping("/signin")
     public ResponseEntity<Object> signin(@RequestBody AuthenticationRequest data) {
         Set<String> roles = new HashSet<>();
         try {
@@ -48,5 +48,5 @@ public class AuthController {
             System.out.println(e);
             throw new BadCredentialsException("Invalid username/password supplied");
         }
-    }
+    }*/
 }
