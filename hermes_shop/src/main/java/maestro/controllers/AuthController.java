@@ -1,8 +1,9 @@
 package maestro.controllers;
 
-import maestro.config.security.JwtTokenProvider;
+import maestro.config.sec.jwt.JwtTokenProvider;
+import maestro.model.Role;
 import maestro.model.User;
-import maestro.repo.UserRepository;
+import maestro.sevices.imp.UserService;
 import maestro.util.Constants;
 import maestro.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,36 +18,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
-    @Autowired
-    AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtTokenProvider jwtTokenProvider;
+
+    private final UserService userService;
 
     @Autowired
-    JwtTokenProvider jwtTokenProvider;
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.userService = userService;
+    }
 
-    @Autowired
-    UserRepository userRepository;
-
-/*    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<Object> signin(@RequestBody AuthenticationRequest data) {
-        Set<String> roles = new HashSet<>();
+        List<Role> roles = new ArrayList<>();
         try {
             String username = data.getUsername();
-            User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username" + username + " not found"));
-            roles  = this.userRepository.findByUsername(username).orElseThrow(() ->new UsernameNotFoundException("Username " + username + " not found")).getRoles();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
-            String token = jwtTokenProvider.createToken(username, this.userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
+            String password = data.getPassword();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            User user = userService.findByUsername(username);
+            if (user == null) {
+                throw new UsernameNotFoundException("User with username - " + user + " not found!");
+            }
+            roles = user.getRoles();
+            String token = jwtTokenProvider.createToken(username, roles);
             Map<Object, Object> resp = new HashMap<>();
             resp.put("username", username);
             resp.put("token", token);
-            resp.put("isAdmin", roles.contains(Constants.ROLE_ADMIN));
+            resp.put("isAdmin", roles.stream().anyMatch(role -> role.getName().equals(Constants.ROLE_ADMIN)));
             resp.put("cartItems", user.getCart().getCartItems().size());
             return Util.createResponseEntity(resp);
         } catch (AuthenticationException e) {
             System.out.println(e);
             throw new BadCredentialsException("Invalid username/password supplied");
         }
-    }*/
+    }
 }

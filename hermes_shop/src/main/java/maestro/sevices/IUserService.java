@@ -10,11 +10,11 @@ import java.util.UUID;
 public interface IUserService {
     User registerNewUser(NewUserDTO newUserDTO);
 
-    User findUserById(UUID id);
+    User findById(Long id);
 
     List<User> getAllUsers();
 
-    void deleteUserById(UUID id);
+    void delete(Long id);
 
     User findByUsername(String username);
 }

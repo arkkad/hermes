@@ -15,7 +15,7 @@ public class UserResponseDTO {
 
     private Boolean isBanned;
 
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public UserResponseDTO() {
     }
@@ -41,11 +41,11 @@ public class UserResponseDTO {
         isBanned = banned;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

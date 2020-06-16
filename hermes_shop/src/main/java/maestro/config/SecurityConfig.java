@@ -1,20 +1,31 @@
 package maestro.config;
 
-import maestro.config.security.JwtSecurityConfigurer;
-import maestro.config.security.JwtTokenProvider;
+import maestro.config.sec.jwt.JwtConfigurer;
+import maestro.config.sec.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final JwtTokenProvider jwtTokenProvider;
+
+    private static final String ADMIN_ENDPOINT = "/api/v1/admin/**";
+    private static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
+    private static final String PRODUCT_ENDPOINT = "/api/products/**";
+
     @Autowired
-    JwtTokenProvider jwtTokenProvider;
+    public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
     @Bean
     @Override
@@ -30,9 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/auth/signin", "/api/users/registration", "/api/categories/*", "/api/products/**", "/img/**", "/api/shoppingcart/**").permitAll()
+                .antMatchers(LOGIN_ENDPOINT,PRODUCT_ENDPOINT).permitAll()
+                .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .apply(new JwtSecurityConfigurer(jwtTokenProvider));
+                .apply(new JwtConfigurer(jwtTokenProvider));
     }
 }

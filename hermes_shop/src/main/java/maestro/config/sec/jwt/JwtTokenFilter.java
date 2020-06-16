@@ -1,6 +1,5 @@
-package maestro.config.security;
+package maestro.config.sec.jwt;
 
-import maestro.exceptions.InvalidJwtAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -12,11 +11,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class JwtTokenAuthenticationFilter extends GenericFilterBean {
-
+public class JwtTokenFilter extends GenericFilterBean {
     private JwtTokenProvider jwtTokenProvider;
 
-    public JwtTokenAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {
+    public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
@@ -33,10 +31,9 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
             }
-        } catch (InvalidJwtAuthenticationException e) {
+        } catch (JwtAuthenticationException e) {
             e.printStackTrace();
         }
         filterChain.doFilter(req, res);
     }
-
 }

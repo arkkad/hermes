@@ -4,6 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @MappedSuperclass
 public class BaseEntity {
@@ -14,11 +15,11 @@ public class BaseEntity {
 
     @CreatedDate
     @Column(name = "created")
-    private String created;
+    private Date created;
 
     @LastModifiedDate
     @Column(name = "updated")
-    private String updated;
+    private Date updated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -27,7 +28,7 @@ public class BaseEntity {
     public BaseEntity() {
     }
 
-    public BaseEntity(String created, String updated, Status status) {
+    public BaseEntity(Date created, Date updated, Status status) {
         this.created = created;
         this.updated = updated;
         this.status = status;
@@ -41,19 +42,19 @@ public class BaseEntity {
         this.id = id;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
-    public String getUpdated() {
+    public Date getUpdated() {
         return updated;
     }
 
-    public void setUpdated(String updated) {
+    public void setUpdated(Date updated) {
         this.updated = updated;
     }
 

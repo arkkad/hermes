@@ -16,7 +16,6 @@ import static java.util.stream.Collectors.toList;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-
     @Column(name = "username")
     private String username;
 
@@ -43,11 +42,11 @@ public class User extends BaseEntity {
             fetch = FetchType.EAGER, optional = false)
     private UserContact userContact;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
-    private Set<Role> roles;
+    private List<Role> roles;
 
     @Override
     public boolean equals(Object o) {
@@ -71,8 +70,6 @@ public class User extends BaseEntity {
         return Objects.hash(email, password, fullName, isEmailVerified, verificationCode, roles, username);
     }
 
-
-
     public String getUsername() {
         return username;
     }
@@ -81,11 +78,11 @@ public class User extends BaseEntity {
         return password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
@@ -195,8 +192,13 @@ public class User extends BaseEntity {
         }
 
 
-        public Builder withRoles(Set<Role> roles) {
+        public Builder withRoles(List<Role> roles) {
             user.roles = roles;
+            return this;
+        }
+
+        public Builder withStatus(Status status){
+            user.setStatus(status);
             return this;
         }
 

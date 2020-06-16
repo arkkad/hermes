@@ -1,6 +1,5 @@
-package maestro.config.security;
+package maestro.config.sec.jwt;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
@@ -14,7 +13,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED	, "Jwt authentication failed");
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Jwt authentication failed");
 
     }
 

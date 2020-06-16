@@ -1,8 +1,12 @@
 package maestro.sevices.imp;
 
+import lombok.extern.slf4j.Slf4j;
 import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
+import maestro.model.Role;
+import maestro.model.Status;
 import maestro.model.User;
+import maestro.repo.RoleRepo;
 import maestro.repo.UserRepository;
 import maestro.sevices.IUserService;
 import maestro.sevices.processing.KafkaMessageProducer;
@@ -14,25 +18,32 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.time.Clock;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
+@Slf4j
 public class UserService implements IUserService {
 
     @PersistenceContext
     private EntityManager em;
+    private final UserRepository userRepository;
+    private final RoleRepo roleRepo;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final KafkaMessageProducer kafkaMessageProducer;
+
     @Autowired
-    UserRepository userRepository;
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    KafkaMessageProducer kafkaMessageProducer;
+    public UserService(UserRepository userRepository, RoleRepo roleRepo, BCryptPasswordEncoder bCryptPasswordEncoder, KafkaMessageProducer kafkaMessageProducer) {
+        this.userRepository = userRepository;
+        this.roleRepo = roleRepo;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.kafkaMessageProducer = kafkaMessageProducer;
+    }
 
     @Override
     public User registerNewUser(NewUserDTO newUserDTO) {
-        List<User> users = userRepository.findAll();
+        Role roleUser = roleRepo.findByName(Constants.ROLE_USER);
+        List<Role> userRoles = new ArrayList<>();
+        userRoles.add(roleUser);
         Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
         User user;
         if (userOptional.isPresent()) {
@@ -42,43 +53,55 @@ public class UserService implements IUserService {
             }
         } else {
             String verificationCode = generateRandomNumericString();
-//            user = new User.Builder()
-//                    .withName(newUserDTO.getUsername())
-//                    .withFullName(newUserDTO.getFullName())
-//                    .withPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()))
-//                    .withEmail(newUserDTO.getEmail())
-//                    .withDateJoined(LocalDateTime.now(Clock.systemUTC()))
-//                    .withVerificationCode(verificationCode)
-//                    .withActive(true)
-//                    .withisEmailVerified(true)
-//                    .withRoles(new HashSet<>(Collections.singletonList(Constants.ROLE_USER)))
-//                    .build();
-//            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
-//            userRepository.save(user);
-            return null;
+            user = new User.Builder()
+                    .withName(newUserDTO.getUsername())
+                    .withFullName(newUserDTO.getFullName())
+                    .withPassword(bCryptPasswordEncoder.encode(newUserDTO.getPassword()))
+                    .withEmail(newUserDTO.getEmail())
+                    .withVerificationCode(verificationCode)
+                    .withisEmailVerified(true)
+                    .withRoles(userRoles)
+                    .build();
+            user.setStatus(Status.ACTIVE);
+            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
+            userRepository.save(user);
+            log.info("IN register - user: {} successfully registered", user);
+            return user;
         }
-        return null;
+        return user;
     }
 
     @Override
-    public User findUserById(UUID id) {
-        return userRepository.findById(id).orElseThrow(()-> new UsernameNotFoundException("Username " + id + " not found"));
+    public User findById(Long id) {
+        User result = userRepository.findById(id).orElse(null);
+
+        if (result == null) {
+            log.warn("IN findById - no user found by id: {}", id);
+            return null;
+        }
+
+        log.info("IN findById - user: {} found by id: {}", result);
+        return result;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> result = userRepository.findAll();
+        log.info("IN getAll - {} users found", result.size());
+        return result;
     }
 
     @Override
-    public void deleteUserById(UUID id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
+        log.info("IN delete - user with id: {} successfully deleted");
     }
 
     @Override
     public User findByUsername(String username) {
         Optional<User> user = userRepository.findByUsername(username);
-        return user.orElseThrow(() -> new UsernameNotFoundException("Username: "+ username + " not found"));
+        log.info("IN findByUsername - user: {} found by username: {}", user.get(), username);
+        return user.orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
     }
 
     private String generateRandomNumericString() {
