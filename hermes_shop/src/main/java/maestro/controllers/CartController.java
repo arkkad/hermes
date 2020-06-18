@@ -1,5 +1,8 @@
 package maestro.controllers;
 
+import lombok.extern.slf4j.Slf4j;
+import maestro.config.sec.jwt.JwtUser;
+import maestro.dto.NewUserDTO;
 import maestro.dto.ProductDTO;
 import maestro.exceptions.UnknownEntityException;
 import maestro.model.User;
@@ -8,49 +11,69 @@ import maestro.sevices.imp.CartService;
 import maestro.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 
+@Slf4j
 @RestController
-@RequestMapping("/api/shoppingcart")
+@RequestMapping("/api/v1/shoppingcart")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CartController {
 
     private final CartService cartService;
-    private final ProductService productService;
 
     @Autowired
-    public CartController(CartService shoppingCartService, ProductService productService) {
+    public CartController(CartService shoppingCartService) {
         this.cartService = shoppingCartService;
-        this.productService = productService;
     }
 
     @GetMapping("/getCart")
     public ResponseEntity<Object> getCart(
-            @AuthenticationPrincipal User user) {
-        return Util.createResponseEntity(cartService.getAllCartItems(user.getUsername()));
+            Authentication authentication) {
+        try {
+            JwtUser user = (JwtUser) authentication.getPrincipal();
+            return Util.createResponseEntity(cartService.getAllCartItems(user.getUsername()));
+        } catch (Exception e) {
+            log.error("Exception " + e);
+            return Util.createResponseEntity(e);
+        }
     }
 
     @GetMapping("/getCartItems")
     public ResponseEntity<Object> getCartItemsCount(
-            @AuthenticationPrincipal User user) {
-        return Util.createResponseEntity(cartService.getCartItemsCount(user.getUsername()));
+            Authentication authentication) {
+        try {
+            JwtUser user = (JwtUser) authentication.getPrincipal();
+            return Util.createResponseEntity(cartService.getCartItemsCount(user.getUsername()));
+        } catch (Exception e) {
+            log.error("Exception " + e);
+            return Util.createResponseEntity(e);
+        }
     }
 
     @PostMapping("/addProduct")
     public ResponseEntity<Object> addToCart(
-            @AuthenticationPrincipal User user,
+            Authentication authentication,
             @RequestBody ProductDTO productDTO) throws UnknownEntityException {
-        cartService.addToCart(user.getUsername(), productDTO.getName(), productDTO.getQuantity());
-        return Util.createResponseEntity("ok");
+        try {
+            JwtUser user = (JwtUser) authentication.getPrincipal();
+            cartService.addToCart(user.getUsername(), productDTO.getName(), productDTO.getQuantity());
+            return Util.createResponseEntity("Product " + productDTO.getName() + " was successfully added!");
+        } catch (Exception e) {
+            log.error("Exception " + e);
+            return Util.createResponseEntity(e);
+        }
     }
 
     @GetMapping("/deleteProductFromCart/{productName}")
     public ResponseEntity<Object> deteleProductFromCart(
-            @AuthenticationPrincipal User user,
+            Authentication authentication,
             @PathVariable("productName") String productName) {
         try {
+            JwtUser user = (JwtUser) authentication.getPrincipal();
             cartService.deleteProductFromCart(user.getUsername(), productName);
             return Util.createResponseEntity(productName + " deleted.");
         } catch (Exception e) {

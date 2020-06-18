@@ -12,10 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
+
 @RestController
 public class UserinfoController {
     @GetMapping("/me")
-    public ResponseEntity<Object> currentUser(@AuthenticationPrincipal UserDetails userDetails){
+    public ResponseEntity<Object> currentUser(@AuthenticationPrincipal UserDetails userDetails) {
         Map<Object, Object> model = new HashMap<>();
         model.put("username", userDetails.getUsername());
         model.put("roles", userDetails.getAuthorities()

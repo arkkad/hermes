@@ -1,6 +1,7 @@
 package maestro.controllers;
 
 import maestro.config.sec.jwt.JwtTokenProvider;
+import maestro.dto.AuthenticationRequestDTO;
 import maestro.model.Role;
 import maestro.model.User;
 import maestro.sevices.imp.UserService;
@@ -35,7 +36,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> signin(@RequestBody AuthenticationRequest data) {
+    public ResponseEntity<Object> signin(@RequestBody AuthenticationRequestDTO data) {
         List<Role> roles = new ArrayList<>();
         try {
             String username = data.getUsername();

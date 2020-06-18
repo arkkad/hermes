@@ -1,15 +1,15 @@
-package maestro.controllers;
+package maestro.dto;
 
 import java.io.Serializable;
 
-public class AuthenticationRequest implements Serializable {
+public class AuthenticationRequestDTO implements Serializable {
     private String username;
     private String password;
 
-    public AuthenticationRequest() {
+    public AuthenticationRequestDTO() {
     }
 
-    public AuthenticationRequest(String username, String password) {
+    public AuthenticationRequestDTO(String username, String password) {
         this.username = username;
         this.password = password;
     }

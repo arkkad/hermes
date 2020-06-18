@@ -9,7 +9,7 @@ import maestro.util.Util;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class RegController {
 
     private final UserService userService;

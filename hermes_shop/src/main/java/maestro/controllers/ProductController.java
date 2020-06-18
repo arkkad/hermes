@@ -8,6 +8,7 @@ import maestro.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
 
@@ -29,7 +30,7 @@ public class ProductController {
     private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepo productRepo,  ProductService productService) {
+    public ProductController(ProductRepo productRepo, ProductService productService) {
         this.productService = productService;
     }
 
@@ -63,11 +64,11 @@ public class ProductController {
 
     @GetMapping("delete/{productId}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public ResponseEntity<Object> deleteProducts(@PathVariable("productId") String name){
+    public ResponseEntity<Object> deleteProducts(@PathVariable("productId") String name) {
         try {
             productService.deleteProductByName(name);
             return Util.createResponseEntity("Product deleted");
-        }catch (Exception e){
+        } catch (Exception e) {
             return Util.createResponseEntity("Error" + e);
         }
     }
