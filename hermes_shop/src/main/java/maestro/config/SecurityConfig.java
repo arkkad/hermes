@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN_ENDPOINT = "/api/v1/admin/*";
     private static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
-    private static final String PRODUCT_ENDPOINT = "/api/v1/products/*";
+    private static final String PRODUCT_ENDPOINT = "/api/v1/products/**";
     private static final String SC_ENDPOINT = "/api/v1/shoppingcart/**";
     private static final String USERS_ENDPOINT = "/api/v1/users/*";
     private static final String IMG_ENDPOINT = "/api/v1/img/*";

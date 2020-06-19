@@ -50,7 +50,7 @@ public class CartController {
             return Util.createResponseEntity(cartService.getCartItemsCount(user.getUsername()));
         } catch (Exception e) {
             log.error("Exception " + e);
-            return Util.createResponseEntity(e);
+            return Util.createResponseEntity("0");
         }
     }
 
