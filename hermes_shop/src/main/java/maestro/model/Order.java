@@ -37,6 +37,9 @@ public class Order implements Serializable {
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Bill bill;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Delivery delivery;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
@@ -116,10 +119,17 @@ public class Order implements Serializable {
         this.user = user;
     }
 
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderDate, isExecuted, totalCost, withDelivery, deliveryCost, orderedProductList, bill, user);
+        return Objects.hash(id, orderDate, isExecuted, totalCost, withDelivery, deliveryCost, orderedProductList, bill, user, delivery);
     }
 
     @Override
@@ -135,7 +145,8 @@ public class Order implements Serializable {
                 Objects.equals(deliveryCost, order.deliveryCost) &&
                 Objects.equals(orderedProductList, order.orderedProductList) &&
                 Objects.equals(bill, order.bill) &&
-                Objects.equals(user, order.user);
+                Objects.equals(user, order.user) &&
+                Objects.equals(delivery, order.delivery);
     }
 
     public static class Builder {
@@ -147,6 +158,7 @@ public class Order implements Serializable {
         private Set<OrderedProduct> orderedProducts;
         private Bill bill;
         private User user;
+        private Delivery delivery;
 
         public Builder() {
         }
@@ -161,40 +173,47 @@ public class Order implements Serializable {
             order.orderedProductList = orderedProducts;
             order.bill = bill;
             order.user = user;
+            order.delivery = delivery;
             return order;
         }
 
-        public Builder withDate(Date date){
+        public Builder withDate(Date date) {
             this.orderDate = date;
             return this;
         }
 
-        public Builder withExecution(boolean ex){
+        public Builder withExecution(boolean ex) {
             this.isExecuted = ex;
             return this;
         }
 
-        public Builder withTotalCost(double totalCost){
+        public Builder withTotalCost(double totalCost) {
             this.totalCost = totalCost;
             return this;
         }
 
-        public Builder withDeliveryCost(double cost){
+        public Builder withDeliveryCost(double cost) {
             this.deliveryCost = cost;
             return this;
         }
 
-        public Builder withOrderedProducts(Set<OrderedProduct> op){
+        public Builder withOrderedProducts(Set<OrderedProduct> op) {
             this.orderedProducts = op;
             return this;
         }
 
-        public Builder withBill(Bill bill){
+        public Builder withBill(Bill bill) {
             this.bill = bill;
             return this;
         }
-        public Builder withUser(User user){
+
+        public Builder withUser(User user) {
             this.user = user;
+            return this;
+        }
+
+        public Builder withDelivery(Delivery delivey) {
+            this.delivery = delivey;
             return this;
         }
 
