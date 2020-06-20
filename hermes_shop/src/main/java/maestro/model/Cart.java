@@ -151,14 +151,6 @@ public class Cart implements Serializable {
         public Builder() {
         }
 
-        public Builder(Cart shoppingCart) {
-            id = shoppingCart.id;
-            user = shoppingCart.user;
-            cartItems = shoppingCart.cartItems;
-            withDelivery = shoppingCart.withDelivery;
-            itemsCost = shoppingCart.itemsCost;
-        }
-
         public Cart build() {
             Cart shoppingCart = new Cart();
             shoppingCart.id = id;
