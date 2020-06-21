@@ -20,7 +20,6 @@ import java.security.Principal;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/shoppingcart")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CartController {
 
     private final CartService cartService;
@@ -53,7 +52,7 @@ public class CartController {
             return Util.createResponseEntity("0");
         }
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/addProduct")
     public ResponseEntity<Object> addToCart(
             Authentication authentication,

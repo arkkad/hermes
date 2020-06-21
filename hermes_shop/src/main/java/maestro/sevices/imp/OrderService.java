@@ -21,9 +21,8 @@ public class OrderService implements IOrderService {
         this.orderRepo = orderRepo;
     }
 
-
     @Override
-    public Order createOrder(String username, double deliveryCost, Delivery delivery, String ccNumber) throws EmptyCartException {
+    public Order createOrder(String username, Delivery delivery, String ccNumber) throws EmptyCartException {
         Cart cart = cartService.getCartOrCreate(username);
         if (cart == null)
             throw new EmptyCartException();
@@ -35,21 +34,15 @@ public class OrderService implements IOrderService {
                 .build();
         if (cart.isWithDelivery()) {
             order.setDelivery(delivery);
-            order.setDeliveryCost(deliveryCost);
+            order.setDeliveryCost(getDeliveryCost(delivery.getDeliveryAddress()));
         }
         Bill bill = createNewBill(order, ccNumber);
         order.setBill(bill);
         return order;
     }
 
-    private Bill createNewBill(Order order, String ccNumber) {
-        return new Bill.Builder()
-                .witBillDate(new Date())
-                .withBillCost(order.getTotalCost())
-                .withCcNumber(ccNumber)
-                .withOrder(order)
-                .withPayed(true)
-                .build();
+    private double getDeliveryCost(String deliveryAddress) {
+        return (100 + new Random().nextInt(999 - 100 + 1));
     }
 
 
@@ -63,5 +56,15 @@ public class OrderService implements IOrderService {
         Order order = orderRepo.findById(orderId).orElseThrow(() -> new NoSuchElementException("No such order!"));
         order.setExecuted(executed);
         orderRepo.save(order);
+    }
+
+    private Bill createNewBill(Order order, String ccNumber) {
+        return new Bill.Builder()
+                .witBillDate(new Date())
+                .withBillCost(order.getTotalCost())
+                .withCcNumber(ccNumber)
+                .withOrder(order)
+                .withPayed(true)
+                .build();
     }
 }

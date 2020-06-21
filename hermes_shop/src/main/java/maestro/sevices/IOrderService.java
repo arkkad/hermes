@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IOrderService {
 
-    Order createOrder(String username, double deliveryCost, Delivery delivery, String ccNumber) throws EmptyCartException;
+    Order createOrder(String username, Delivery delivery, String ccNumber) throws EmptyCartException;
     List<Order> getUserOrders(String username);
     void updateStatus(long orderId, boolean executed);
 }

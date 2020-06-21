@@ -3,6 +3,9 @@ package maestro.sevices;
 import maestro.dto.NewProductDTO;
 import maestro.exceptions.UnknownEntityException;
 import maestro.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +27,6 @@ public interface IProductService {
 
     Product getProductByName(String name);
 
-    List<Product> findByName(String category);
+    Page<Product> findByCategories(String category, PageRequest pageable);
 }
 
