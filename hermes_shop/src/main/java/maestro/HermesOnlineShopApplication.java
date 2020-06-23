@@ -1,5 +1,6 @@
 package maestro;
 
+import maestro.properties.PaginationProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,6 @@ public class HermesOnlineShopApplication {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(HermesOnlineShopApplication.class, args);

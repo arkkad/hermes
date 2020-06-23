@@ -1,6 +1,9 @@
 package maestro.controllers;
 
 import maestro.dto.NewProductDTO;
+import maestro.dto.ProductDTO;
+import maestro.properties.PaginationProperties;
+import maestro.sorting.ISorter;
 import maestro.sorting.ProductBackendSorting;
 import maestro.sorting.SortingValuesDTO;
 import maestro.model.Product;
@@ -32,9 +35,9 @@ public class ProductController {
     private final ProductBackendSorting productBackendSorting;
 
     @Autowired
-    public ProductController(ProductRepo productRepo, ProductService productService, ProductBackendSorting productBackendSorting) {
+    public ProductController(ProductRepo productRepo, ProductService productService, PaginationProperties paginationProperties) {
         this.productService = productService;
-        this.productBackendSorting = productBackendSorting;
+        this.productBackendSorting = new ProductBackendSorting(paginationProperties.getBackendProduct());
     }
 
     @GetMapping("/{category}")

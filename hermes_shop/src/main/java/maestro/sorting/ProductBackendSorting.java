@@ -1,13 +1,18 @@
 package maestro.sorting;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ProductBackendSorting extends AbstractSorter {
-    private final int defaultPageSize;
+    private int defaultPageSize=0;
+
+    public ProductBackendSorting() {
+    }
 
     public ProductBackendSorting(int defaultPageSize) {
         this.defaultPageSize = defaultPageSize;
         sortFieldOptions.put("price", "по цене");
-        sortFieldOptions.put("distillery.title", "по винокурне");
-        sortFieldOptions.put("age", "по возрасту");
+        sortFieldOptions.put("category", "по категории");
     }
 
     @Override

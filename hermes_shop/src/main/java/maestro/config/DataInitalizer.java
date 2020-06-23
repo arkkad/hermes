@@ -61,7 +61,7 @@ public class DataInitalizer implements CommandLineRunner {
         userRepository.save(user);
         cartRepo.save(shoppingCart);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 30; i++) {
             Set<String> categorySet = new HashSet<>();
             categorySet.add(Constants.PHONES_CATEGORY);
             Product product = new Product.Builder()

@@ -3,6 +3,7 @@ package maestro.config;
 import maestro.config.sec.jwt.JwtConfigurer;
 import maestro.config.sec.jwt.JwtTokenFilter;
 import maestro.config.sec.jwt.JwtTokenProvider;
+import maestro.properties.PaginationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public PaginationProperties paginationProperties() {
+        return new PaginationProperties(10);
     }
 
     @Override
