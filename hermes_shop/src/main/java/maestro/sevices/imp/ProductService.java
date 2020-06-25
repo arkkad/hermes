@@ -10,6 +10,7 @@ import maestro.repo.ProductRepo;
 import maestro.sevices.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -84,10 +85,8 @@ public class ProductService implements IProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Product> findAll() {
-        return productRepo.findAll().stream()
-                .sorted(Comparator.comparing(Product::getName))
-                .collect(Collectors.toList());
+    public Page<Product> findAll(PageRequest pageRequest) {
+        return productRepo.findAll(pageRequest);
     }
 
     @Override

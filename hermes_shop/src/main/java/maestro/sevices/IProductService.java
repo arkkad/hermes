@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface IProductService {
 
-    List<Product> findAll();
+    Page<Product> findAll(PageRequest pageable);
 
     List<Product> findByCategory(String category);
 

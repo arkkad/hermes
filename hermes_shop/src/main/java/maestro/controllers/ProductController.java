@@ -40,19 +40,30 @@ public class ProductController {
         this.productBackendSorting = new ProductBackendSorting(paginationProperties.getBackendProduct());
     }
 
-    @GetMapping("/{category}")
+    @GetMapping("/{category}/{page}")
     public ResponseEntity<Object> getProductsByCategory(
             SortingValuesDTO sortingValues,
-            @PathVariable("category") String category) {
+            @PathVariable("category") String category,
+            @PathVariable(value = "page", required = false) String page) {
+        if(page != null){
+            sortingValues.setPage(Integer.valueOf(page));
+        }
         PageRequest request = productBackendSorting.updateSorting(sortingValues);
-        Page<Product> cat = productService.findByCategories(category, request);
-        return Util.createResponseEntity(cat);
+        Page<Product> p = productService.findByCategories(category, request);
+        return Util.createResponseEntity(p);
     }
 
 
-    @GetMapping("/all")
-    public ResponseEntity<Object> getAllProducts() {
-        return Util.createResponseEntity(productService.findAll());
+    @GetMapping("/all/{page}")
+    public ResponseEntity<Object> getAllProducts(
+            SortingValuesDTO sortingValues,
+            @PathVariable(value = "page", required = false) String page) {
+        if(page != null){
+            sortingValues.setPage(Integer.valueOf(page));
+        }
+        PageRequest request = productBackendSorting.updateSorting(sortingValues);
+        Page<Product> p = productService.findAll(request);
+        return Util.createResponseEntity(p);
     }
 
     @PostMapping("/addProduct")
