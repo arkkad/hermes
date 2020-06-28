@@ -1,43 +1,19 @@
-package maestro.model;
+package maestro.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 
-@Entity
-@Table(name = "order_delivery")
-public class Delivery {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "delivery_address", nullable = false)
+public class DeliveryDTO {
     private String deliveryAddress;
-
-    @Column(name = "delivery_phone", nullable = false)
     private String deliveryPhone;
-
-    @Column(name = "delivery_name")
     private String deliveryName;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Order order;
-
-    public Delivery() {
+    public DeliveryDTO() {
     }
 
-    public Delivery(String deliveryAddress, String deliveryPhone, String deliveryName) {
+    public DeliveryDTO(String deliveryAddress, String deliveryPhone, String deliveryName) {
         this.deliveryAddress = deliveryAddress;
         this.deliveryPhone = deliveryPhone;
         this.deliveryName = deliveryName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getDeliveryAddress() {
@@ -62,13 +38,5 @@ public class Delivery {
 
     public void setDeliveryName(String deliveryName) {
         this.deliveryName = deliveryName;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 }

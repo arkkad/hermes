@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String SC_ENDPOINT = "/api/v1/shoppingcart/**";
     private static final String USERS_ENDPOINT = "/api/v1/users/*";
     private static final String IMG_ENDPOINT = "/api/v1/img/*";
+    private static final  String ORDER_ENDPOINT = "/api/v1/orders";
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -54,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(LOGIN_ENDPOINT, PRODUCT_ENDPOINT,  IMG_ENDPOINT/*, SC_ENDPOINT, USERS_ENDPOINT,*/).permitAll()
+                .antMatchers(LOGIN_ENDPOINT, PRODUCT_ENDPOINT,  IMG_ENDPOINT).permitAll()
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

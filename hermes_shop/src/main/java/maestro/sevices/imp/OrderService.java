@@ -1,5 +1,6 @@
 package maestro.sevices.imp;
 
+import maestro.dto.DeliveryDTO;
 import maestro.exceptions.EmptyCartException;
 import maestro.model.*;
 import maestro.repo.OrderRepo;
@@ -7,6 +8,8 @@ import maestro.sevices.IOrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
+import static java.util.stream.Collectors.toSet;
 
 @Service
 public class OrderService implements IOrderService {
@@ -22,7 +25,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Order createOrder(String username, Delivery delivery, String ccNumber) throws EmptyCartException {
+    public Order createOrder(String username, DeliveryDTO deliveryDTO, String ccNumber) throws EmptyCartException {
         Cart cart = cartService.getCartOrCreate(username);
         if (cart == null)
             throw new EmptyCartException();
@@ -32,13 +35,31 @@ public class OrderService implements IOrderService {
                 .withTotalCost(cart.getItemsCost())
                 .withExecution(false)
                 .build();
+
+        fillOrderItems(cart, order);
         if (cart.isWithDelivery()) {
+            Delivery delivery = createDelivery(deliveryDTO);
             order.setDelivery(delivery);
             order.setDeliveryCost(getDeliveryCost(delivery.getDeliveryAddress()));
         }
         Bill bill = createNewBill(order, ccNumber);
         order.setBill(bill);
         return order;
+    }
+
+    private void fillOrderItems(Cart cart, Order order) {
+        Set<OrderedProduct> ordered = cart.getCartItems().stream()
+                .map(cartItem -> createOrderedProduct(order, cartItem))
+                .collect(toSet());
+        order.setOrderedProductList(ordered);
+
+    }
+
+    private OrderedProduct createOrderedProduct(Order order, CartItem cartItem) {
+        OrderedProduct orderedProduct = new OrderedProduct();
+        orderedProduct.setOrder(order);
+        orderedProduct.setProduct(cartItem.getProduct());
+        return orderedProduct;
     }
 
     private double getDeliveryCost(String deliveryAddress) {
@@ -66,5 +87,12 @@ public class OrderService implements IOrderService {
                 .withOrder(order)
                 .withPayed(true)
                 .build();
+    }
+
+    private Delivery createDelivery(DeliveryDTO deliveryDTO) {
+        return new Delivery(
+                deliveryDTO.getDeliveryAddress(),
+                deliveryDTO.getDeliveryName(),
+                deliveryDTO.getDeliveryName());
     }
 }
