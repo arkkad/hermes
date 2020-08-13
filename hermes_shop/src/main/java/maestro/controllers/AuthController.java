@@ -4,6 +4,7 @@ import maestro.config.sec.jwt.JwtTokenProvider;
 import maestro.dto.AuthenticationRequestDTO;
 import maestro.model.Role;
 import maestro.model.User;
+import maestro.sevices.IUserService;
 import maestro.sevices.imp.UserService;
 import maestro.util.Constants;
 import maestro.util.Util;
@@ -16,7 +17,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -26,10 +31,10 @@ public class AuthController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    private final UserService userService;
+    private final IUserService userService;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService) {
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, IUserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;

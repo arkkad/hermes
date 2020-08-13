@@ -6,6 +6,7 @@ import maestro.dto.NewUserDTO;
 import maestro.dto.ProductDTO;
 import maestro.exceptions.UnknownEntityException;
 import maestro.model.User;
+import maestro.sevices.ICartService;
 import maestro.sevices.imp.ProductService;
 import maestro.sevices.imp.CartService;
 import maestro.util.Util;
@@ -22,10 +23,10 @@ import java.security.Principal;
 @RequestMapping("/api/v1/shoppingcart")
 public class CartController {
 
-    private final CartService cartService;
+    private final ICartService cartService;
 
     @Autowired
-    public CartController(CartService shoppingCartService) {
+    public CartController(ICartService shoppingCartService) {
         this.cartService = shoppingCartService;
     }
 

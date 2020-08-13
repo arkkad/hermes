@@ -3,6 +3,7 @@ package maestro.controllers;
 import maestro.dto.NewProductDTO;
 import maestro.dto.ProductDTO;
 import maestro.properties.PaginationProperties;
+import maestro.sevices.IProductService;
 import maestro.sorting.ISorter;
 import maestro.sorting.ProductBackendSorting;
 import maestro.sorting.SortingValuesDTO;
@@ -31,11 +32,11 @@ public class ProductController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    private final ProductService productService;
+    private final IProductService productService;
     private final ProductBackendSorting productBackendSorting;
 
     @Autowired
-    public ProductController(ProductRepo productRepo, ProductService productService, PaginationProperties paginationProperties) {
+    public ProductController(IProductService productService, PaginationProperties paginationProperties) {
         this.productService = productService;
         this.productBackendSorting = new ProductBackendSorting(paginationProperties.getBackendProduct());
     }
