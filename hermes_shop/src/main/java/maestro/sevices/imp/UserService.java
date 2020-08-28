@@ -1,6 +1,7 @@
 package maestro.sevices.imp;
 
 import lombok.extern.slf4j.Slf4j;
+import maestro.annotations.Logging;
 import maestro.dto.NewUserDTO;
 import maestro.exceptions.HermesException;
 import maestro.model.Role;
@@ -72,6 +73,7 @@ public class UserService implements IUserService {
     }
 
     @Override
+    @Logging
     public User findById(Long id) {
         User result = userRepository.findById(id).orElse(null);
 
@@ -85,6 +87,7 @@ public class UserService implements IUserService {
     }
 
     @Override
+    @Logging
     public List<User> getAllUsers() {
         List<User> result = userRepository.findAll();
         log.info("IN getAll - {} users found", result.size());
@@ -92,12 +95,14 @@ public class UserService implements IUserService {
     }
 
     @Override
+    @Logging
     public void delete(Long id) {
         userRepository.deleteById(id);
         log.info("IN delete - user with id: {} successfully deleted");
     }
 
     @Override
+    @Logging
     public User findByUsername(String username) {
         Optional<User> user = userRepository.findByUsername(username);
         log.info("IN findByUsername - user: {} found by username: {}", user.get(), username);

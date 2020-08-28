@@ -2,24 +2,24 @@ version: '3.2'
 services:
   docker_db:
     container_name: docker_db
-    image: postgres
+    image: mysql:5.7
+    restart: always
     environment:
-      POSTGRES_DB: hermes
-      POSTGRES_ROOT_PASSWORD: 'root'
-      POSTGRES_USER: 'root'
-      POSTGRES_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: hermes
+      MYSQL_PASSWORD: 'root'
     ports:
-      - "5432:5432"
+      - "3306:3306"
     networks:
       - my_new_net
 
   my_app:
-    container_name: docker_app
+    container_name: my_app
     build:
       context: ./hermes_shop
       dockerfile: Dockerfile
     ports:
-      - 8085:8080
+      - 8080:8080
     restart: always
     depends_on:
       - docker_db
