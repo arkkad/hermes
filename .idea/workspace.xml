@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:hermes_shop" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f3a4e0ae-3562-46f9-88f3-d21ee5f7601c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/config/DataInitalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/java/maestro/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_docker/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/processing/KafkaMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/hermes_shop_mailsender/src/main/java/service/processing/KafkaMessageReceiver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +56,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -33,17 +73,37 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react_test_kafka_mailsender" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../urlcutter/cutter" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hermes_shop_mailsender" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="mailsender.dto" />
@@ -51,11 +111,11 @@
       <recent name="maestro.exceptions" />
       <recent name="maestro.config.security" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hermes_shop_mailsender" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="X:\dev\hermes\hermes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HermesOnlineShopApplication">
+  <component name="RunManager" selected="Spring Boot.HermesOnlineShopApplication">
     <configuration name="EmailSenderApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="mailsender.config.EmailSenderApplication" />
       <module name="hermes_shop_mailsender" />
@@ -71,8 +131,25 @@
     </configuration>
     <configuration name="HermesOnlineShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="maestro.HermesOnlineShopApplication" />
-      <module name="hermes_shop" />
-      <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=dev" />
+      <module name="hermes" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailSenderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hermes-mail-sender" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="mailsender.config.EmailSenderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HermesOnlineShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hermes" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="maestro.HermesOnlineShopApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <envs>
+        <env name="--spring.profiles.active" value="dev" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,6 +157,8 @@
     <list>
       <item itemvalue="Application.EmailSenderApplication" />
       <item itemvalue="Application.HermesOnlineShopApplication" />
+      <item itemvalue="Spring Boot.HermesOnlineShopApplication" />
+      <item itemvalue="Spring Boot.EmailSenderApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -98,121 +177,197 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587402799958</updated>
+      <workItem from="1596309212880" duration="1057000" />
+      <workItem from="1596388180615" duration="2882000" />
+      <workItem from="1596444199127" duration="2656000" />
+      <workItem from="1596467758381" duration="1260000" />
+      <workItem from="1596474191132" duration="651000" />
+      <workItem from="1596477331304" duration="22000" />
+      <workItem from="1596477853335" duration="2001000" />
+      <workItem from="1597338046479" duration="4636000" />
+      <workItem from="1597389118670" duration="1158000" />
+      <workItem from="1597393651223" duration="1942000" />
+      <workItem from="1597416786501" duration="2731000" />
+      <workItem from="1597491868154" duration="744000" />
+      <workItem from="1597497953141" duration="471000" />
+      <workItem from="1597538285495" duration="259000" />
+      <workItem from="1597681190311" duration="629000" />
+      <workItem from="1597939204868" duration="1921000" />
+      <workItem from="1598522702422" duration="10558000" />
+      <workItem from="1598606926730" duration="4846000" />
+      <workItem from="1598631438007" duration="3015000" />
+      <workItem from="1598868911815" duration="1525000" />
+      <workItem from="1598876672108" duration="48000" />
+      <workItem from="1598879863590" duration="653000" />
+      <workItem from="1598880636127" duration="195000" />
+      <workItem from="1598880845417" duration="71000" />
+      <workItem from="1598881957948" duration="2753000" />
+      <workItem from="1598885185226" duration="648000" />
+      <workItem from="1598888427464" duration="2417000" />
+      <workItem from="1598895153620" duration="20000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="1085" y="234" width="732" height="637" key="#Inspections" timestamp="1589445617940">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="667" y="154" key="#HermesOnlineShopApplication" timestamp="1596309357685">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1085" y="234" width="732" height="637" key="#Inspections/67.27.1853.1053@67.27.1853.1053" timestamp="1589445617940" />
-    <state x="67" y="131" width="1024" height="845" key="#Project_Structure" timestamp="1588246889097">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="667" y="154" key="#HermesOnlineShopApplication/0.0.1920.1040@0.0.1920.1040" timestamp="1596309357685" />
+    <state x="440" y="97" key="#Project_Structure" timestamp="1598894592547">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="67" y="131" width="1024" height="845" key="#Project_Structure/67.27.1853.1053@67.27.1853.1053" timestamp="1588246889097" />
-    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588275873048">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="440" y="97" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1598894592547" />
+    <state x="767" y="312" key="#Web_Browsers" timestamp="1597498107017">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588275873048" />
-    <state x="198" y="354" width="719" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588274985896">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="767" y="312" key="#Web_Browsers/0.0.1920.1040@0.0.1920.1040" timestamp="1597498107017" />
+    <state x="398" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598554876390">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="198" y="354" width="719" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588274985896" />
-    <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1590856741920">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="398" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598554876390" />
+    <state x="727" y="329" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598556723440">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="727" y="329" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598556723440" />
+    <state x="277" y="210" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1597339229740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="277" y="210" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597339229740" />
     <state x="334" y="240" width="374" height="626" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590856741920" />
     <state x="773" y="330" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1590856188183">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="773" y="330" width="524" height="444" key="#com.intellij.ide.util.PackageChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1590856188183" />
-    <state x="160" y="478" width="722" height="151" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1587993302454">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="160" y="478" width="722" height="151" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1587993302454" />
-    <state x="279" y="435" width="484" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1587403583408">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="279" y="435" width="484" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/67.27.1853.1053@67.27.1853.1053" timestamp="1587403583408" />
     <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590923186484">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="137" y="117" width="766" height="871" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1590923186483" />
-    <state x="833" y="308" width="309" height="488" key="EnvironmentVariablesDialog" timestamp="1588275152170">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="1157" y="110" key="#hermes_shop_mailsender/Dockerfile" timestamp="1597492008369">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="833" y="308" width="309" height="488" key="EnvironmentVariablesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588275152170" />
-    <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590943534101">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="1157" y="110" key="#hermes_shop_mailsender/Dockerfile/0.0.1920.1040@0.0.1920.1040" timestamp="1597492008369" />
+    <state x="242" y="280" width="424" height="484" key="FileChooserDialogImpl" timestamp="1598895170733">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="242" y="280" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1598895170733" />
     <state x="301" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590943534101" />
-    <state width="1807" height="305" key="GridCell.Tab.0.bottom" timestamp="1590946912445">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.0.bottom" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912445" />
-    <state width="1807" height="305" key="GridCell.Tab.0.center" timestamp="1590946912444">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.0.center" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912444" />
-    <state width="1807" height="305" key="GridCell.Tab.0.left" timestamp="1590946912444">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.0.left" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912444" />
-    <state width="1807" height="305" key="GridCell.Tab.0.right" timestamp="1590946912445">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.0.right" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912445" />
-    <state width="1807" height="305" key="GridCell.Tab.1.bottom" timestamp="1590946912451">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.1.bottom" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912451" />
-    <state width="1807" height="305" key="GridCell.Tab.1.center" timestamp="1590946912450">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.1.center" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912450" />
-    <state width="1807" height="305" key="GridCell.Tab.1.left" timestamp="1590946912449">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.1.left" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912449" />
-    <state width="1807" height="305" key="GridCell.Tab.1.right" timestamp="1590946912450">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.1.right" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="373" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
     <state width="1807" height="305" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590946912450" />
-    <state x="113" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1589979944146">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.2.bottom" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="113" y="289" width="824" height="526" key="IDE.errors.dialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589979944146" />
-    <state x="526" y="210" width="924" height="684" key="Maven.ArtifactSearchDialog" timestamp="1588969046063">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
+    <state width="1877" height="373" key="GridCell.Tab.2.center" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="526" y="210" width="924" height="684" key="Maven.ArtifactSearchDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588969046063" />
-    <state x="184" y="391" width="780" height="439" key="NewModule_or_Project.wizard" timestamp="1588257583740">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
+    <state width="1877" height="373" key="GridCell.Tab.2.left" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="391" width="780" height="439" key="NewModule_or_Project.wizard/67.27.1853.1053@67.27.1853.1053" timestamp="1588257583740" />
-    <state x="526" y="235" width="1024" height="845" key="SettingsEditor" timestamp="1588257592902">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
+    <state width="1877" height="373" key="GridCell.Tab.2.right" timestamp="1598895040566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="526" y="235" width="1024" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588257592902" />
-    <state x="67" y="27" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589367288733">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="373" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598895040566" />
+    <state x="463" y="166" key="SettingsEditor" timestamp="1597338405240">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="67" y="27" width="1653" height="855" key="com.intellij.history.integration.ui.views.FileHistoryDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1589367288733" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1589985522801">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="463" y="166" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597338405240" />
+    <state width="498" height="468" key="SwitcherDM" timestamp="1597340073141">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1589985522801" />
-    <state x="381" y="386" width="1372" height="592" key="new project wizard" timestamp="1588243081383">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="498" height="468" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1597340073141" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1598637754993">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="381" y="386" width="1372" height="592" key="new project wizard/67.27.1853.1053@67.27.1853.1053" timestamp="1588243081383" />
-    <state x="657" y="253" key="run.anything.popup" timestamp="1590946000947">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1598637754993" />
+    <state x="438" y="185" width="1372" height="592" key="new project wizard" timestamp="1598885785799">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="438" y="185" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1598885785799" />
+    <state x="611" y="223" key="run.anything.popup" timestamp="1598637202892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="611" y="223" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598637202892" />
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590946000947" />
-    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589486884269">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="193" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1589486884269" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/AuthController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/AuthController.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/controllers/RegController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hermes_shop/src/main/java/maestro/sevices/imp/UserService.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

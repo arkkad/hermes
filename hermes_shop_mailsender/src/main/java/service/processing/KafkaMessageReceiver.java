@@ -24,7 +24,6 @@ public class KafkaMessageReceiver {
 
     @KafkaListener(topics = "${spring.kafka.email.verification.code.topic}")
     public void listenEmailVerificationCodeTopic(@Payload Map<String, String> message) {
-        System.out.println("adadasdasdasdasda____________");
         IEmailService.sendEmailVerificationCode(message);
     }
 

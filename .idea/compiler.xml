@@ -8,11 +8,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="hermes_shop_mailsender" />
         <module name="hermes_shop" />
+        <module name="hermes-mail-sender" />
+        <module name="hermes" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hermes" options="-parameters" />
+      <module name="hermes-mail-sender" options="-parameters" />
       <module name="hermes_shop" options="-parameters" />
       <module name="hermes_shop_mailsender" options="-parameters" />
     </option>
