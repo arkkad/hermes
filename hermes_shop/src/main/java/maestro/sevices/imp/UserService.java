@@ -43,8 +43,10 @@ public class UserService implements IUserService {
     @Override
     public User registerNewUser(NewUserDTO newUserDTO) {
         Role roleUser = roleRepo.findByName(Constants.ROLE_USER);
+        Role roleAdmin = roleRepo.findByName(Constants.ROLE_ADMIN);
         List<Role> userRoles = new ArrayList<>();
         userRoles.add(roleUser);
+        userRoles.add(roleAdmin);
         Optional<User> userOptional = userRepository.findByEmail(newUserDTO.getEmail());
         User user;
         if (userOptional.isPresent()) {
@@ -64,7 +66,7 @@ public class UserService implements IUserService {
                     .withRoles(userRoles)
                     .build();
             user.setStatus(Status.ACTIVE);
-            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
+//            kafkaMessageProducer.sendEmailVerificationCode(user, verificationCode);
             userRepository.save(user);
             log.info("IN register - user: {} successfully registered", user);
             return user;

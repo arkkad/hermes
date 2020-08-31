@@ -39,27 +39,27 @@ public class DataInitalizer implements CommandLineRunner {
         userRepository.deleteAll();
         cartRepo.deleteAll();
         productRepo.deleteAll();
-        List<Role> userRoles = new ArrayList<>();
-        userRoles.add(roleRepo.findByName(Constants.ROLE_USER));
-        userRoles.add(roleRepo.findByName(Constants.ROLE_ADMIN));
-        UserContact userContact = new UserContact();
-        Cart shoppingCart = new Cart();
-        User user = new User.Builder()
-                .withName("admin")
-                .withEmail("123@123.com")
-                .withPassword(passwordEncoder.encode("123"))
-                .withisEmailVerified(true)
-                .withFullName("ADMIN")
-                .withRoles(userRoles)
-                .withContact(userContact)
-                .withCart(shoppingCart)
-                .withStatus(Status.ACTIVE)
-                .withVerificationCode("1234")
-                .build();
-        userContact.setUser(user);
-        shoppingCart.setUser(user);
-        userRepository.save(user);
-        cartRepo.save(shoppingCart);
+//        List<Role> userRoles = new ArrayList<>();
+//        userRoles.add(roleRepo.findByName(Constants.ROLE_USER));
+//        userRoles.add(roleRepo.findByName(Constants.ROLE_ADMIN));
+//        UserContact userContact = new UserContact();
+//        Cart shoppingCart = new Cart();
+//        User user = new User.Builder()
+//                .withName("admin")
+//                .withEmail("123@123.com")
+//                .withPassword(passwordEncoder.encode("123"))
+//                .withisEmailVerified(true)
+//                .withFullName("ADMIN")
+//                .withRoles(userRoles)
+//                .withContact(userContact)
+//                .withCart(shoppingCart)
+//                .withStatus(Status.ACTIVE)
+//                .withVerificationCode("1234")
+//                .build();
+//        userContact.setUser(user);
+//        shoppingCart.setUser(user);
+//        userRepository.save(user);
+//        cartRepo.save(shoppingCart);
 
         for (int i = 0; i < 30; i++) {
             Set<String> categorySet = new HashSet<>();
